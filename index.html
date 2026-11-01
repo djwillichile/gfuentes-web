@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Guillermo S. Fuentes-Jaque | Científico de datos geoespaciales</title>
+  <meta name="description" content="Guillermo S. Fuentes-Jaque, científico de datos geoespaciales con más de 10 años en teledetección, estadística aplicada y programación. Experiencia, habilidades, proyectos, publicaciones y tesis sobre precipitación en el desierto de Atacama.">
+  <!-- Versión paralela en nueva.gfuentes.cl: no indexar hasta reemplazar gfuentes.cl. Al lanzar, borrar esta línea. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://gfuentes.cl/">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:site_name" content="Guillermo S. Fuentes-Jaque">
+  <meta property="og:title" content="Guillermo S. Fuentes-Jaque | Científico de datos geoespaciales">
+  <meta property="og:description" content="Teledetección, estadística y programación para entender el clima y el territorio, de los datos al visor.">
+  <meta property="og:url" content="https://gfuentes.cl/">
+  <meta property="og:image" content="https://gfuentes.cl/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Guillermo S. Fuentes-Jaque, científico de datos geoespaciales">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#0e1624">
+  <link rel="icon" href="ICO/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="ICO/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="ICO/apple-icon-180x180.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/sora.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Guillermo S. Fuentes-Jaque",
+    "url": "https://gfuentes.cl/",
+    "image": "https://gfuentes.cl/og.png",
+    "jobTitle": "Científico de Datos Geoespaciales",
+    "worksFor": { "@type": "Organization", "name": "Instituto de Ciencias y Tecnología Ambiental (ICTA)" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Universidad de Chile" },
+      { "@type": "CollegeOrUniversity", "name": "Universidad San Sebastián" }
+    ],
+    "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" },
+    "email": "mailto:g.fuentes@renare.uchile.cl",
+    "knowsAbout": ["Geomática", "Teledetección", "Sistemas de Información Geográfica", "Ciencia de datos", "Estadística aplicada", "Google Earth Engine", "Climatología", "R", "Python", "SQL"],
+    "sameAs": ["https://www.linkedin.com/in/guillermo-fuentes-jaque", "https://github.com/djwillichile"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Thesis",
+    "name": "Desarrollo de un método para estimar la distribución espacial de la precipitación mensual en alta resolución en el desierto de Atacama (Chile) a partir de productos CHIRPS",
+    "author": { "@type": "Person", "name": "Guillermo S. Fuentes-Jaque" },
+    "datePublished": "2022",
+    "inSupportOf": "Magíster en Gestión Territorial de Recursos Naturales",
+    "sourceOrganization": { "@type": "CollegeOrUniversity", "name": "Universidad de Chile" },
+    "url": "https://repositorio.uchile.cl/handle/2250/200362"
+  }
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /> <rect width="20" height="14" x="2" y="6" rx="2" /></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /> <path d="M22 10v6" /> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="M18 17V9" /> <path d="M13 17V5" /> <path d="M8 17v-3" /></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" /> <path d="M15 5.764v15" /> <path d="M9 3.236v15" /></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 13.74a2 2 0 0 1-2 0L2.5 8.87a1 1 0 0 1 0-1.74L11 2.26a2 2 0 0 1 2 0l8.5 4.87a1 1 0 0 1 0 1.74z" /> <path d="m20 14.285 1.5.845a1 1 0 0 1 0 1.74L13 21.74a2 2 0 0 1-2 0l-8.5-4.87a1 1 0 0 1 0-1.74l1.5-.845" /></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6" /> <path d="m8 6-6 6 6 6" /></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v2" /> <path d="M12 2v2" /> <path d="M17 20v2" /> <path d="M17 2v2" /> <path d="M2 12h2" /> <path d="M2 17h2" /> <path d="M2 7h2" /> <path d="M20 12h2" /> <path d="M20 17h2" /> <path d="M20 7h2" /> <path d="M7 20v2" /> <path d="M7 2v2" /> <rect x="4" y="4" width="16" height="16" rx="2" /> <rect x="8" y="8" width="8" height="8" rx="1" /></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></symbol>
+    <symbol id="i-workflow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="3" y="3" rx="2" /> <path d="M7 11v4a2 2 0 0 0 2 2h4" /> <rect width="8" height="8" x="13" y="13" rx="2" /></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /> <rect width="16" height="12" x="4" y="8" rx="2" /> <path d="M2 14h2" /> <path d="M20 14h2" /> <path d="M15 13v2" /> <path d="M9 13v2" /></symbol>
+    <symbol id="i-presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20" /> <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /> <path d="m7 21 5-5 5 5" /></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /> <path d="M7 17 17 7" /></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="3" width="5" height="18" rx="1" /> <rect x="5" y="3" width="5" height="18" rx="1" /></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16" /> <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol>
+    <symbol id="i-satellite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13.5 6.5-3.148-3.148a1.205 1.205 0 0 0-1.704 0L6.352 5.648a1.205 1.205 0 0 0 0 1.704L9.5 10.5" /> <path d="M16.5 7.5 19 5" /> <path d="m17.5 10.5 3.148 3.148a1.205 1.205 0 0 1 0 1.704l-2.296 2.296a1.205 1.205 0 0 1-1.704 0L13.5 14.5" /> <path d="M9 21a6 6 0 0 0-6-6" /> <path d="M9.352 10.648a1.205 1.205 0 0 0 0 1.704l2.296 2.296a1.205 1.205 0 0 0 1.704 0l4.296-4.296a1.205 1.205 0 0 0 0-1.704l-2.296-2.296a1.205 1.205 0 0 0-1.704 0z" /></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v3" /> <path d="M16 2v3" /> <rect x="3" y="3" width="18" height="18" rx="2" /> <path d="M3 9h18" /> <path d="M8 13h.01" /> <path d="M12 13h.01" /> <path d="M16 13h.01" /> <path d="M8 17h.01" /> <path d="M12 17h.01" /> <path d="M16 17h.01" /></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 19a5 5 0 0 1-5-5v8" /> <path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5" /> <circle cx="13" cy="12" r="2" /> <circle cx="20" cy="19" r="2" /></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  </defs></svg>
+  <canvas class="net" aria-hidden="true"></canvas>
+
+  <a class="skip" href="#perfil">Saltar al contenido</a>
+
+  <header class="bar">
+    <a class="wordmark" href="#inicio">G. Fuentes-Jaque</a>
+    <nav aria-label="Secciones">
+      <a href="#experiencia">Experiencia</a>
+      <a href="#mapa">Mapa</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#publicaciones">Publicaciones</a>
+    </nav>
+    <a class="button button--small" href="#contacto">Contacto</a>
+  </header>
+
+  <section class="hero" id="inicio" aria-labelledby="hero-t">
+    <div class="hero__media" aria-label="Lugares que he estudiado, vistos desde el espacio">
+      <figure class="hero__pic is-active" data-cap="18° S · Río Lluta, Arica"><img src="assets/img/lluta.jpg" width="1600" height="1001" alt="Quebradas del río Lluta, cerca de Arica, desde la Estación Espacial Internacional" fetchpriority="high"></figure>
+      <figure class="hero__pic" data-cap="23° S · Nieve en el desierto de Atacama, 2025"><img src="assets/img/atacama-nieve.jpg" width="1000" height="667" alt="Nieve poco común sobre el desierto de Atacama, imagen Landsat de 2025" loading="lazy"></figure>
+      <figure class="hero__pic" data-cap="33° S · Santiago de noche"><img src="assets/img/santiago-noche.jpg" width="1100" height="733" alt="Santiago de noche desde la Estación Espacial Internacional" loading="lazy"></figure>
+      <figure class="hero__pic" data-cap="49° S · Campo de Hielo Patagónico Sur"><img src="assets/img/campo-de-hielo.jpg" width="1100" height="732" alt="Campo de Hielo Patagónico Sur desde la Estación Espacial Internacional" loading="lazy"></figure>
+      <p class="hero__cap"><svg class="icon" aria-hidden="true"><use href="#i-satellite"/></svg><span>18° S · Río Lluta, Arica</span></p>
+    </div>
+    <div class="hero__text">
+      <p class="hero__role" data-in>Científico de datos geoespaciales</p>
+      <h1 id="hero-t" class="hero__name" data-in>Guillermo S. Fuentes-Jaque</h1>
+      <p class="hero__lead" data-in>Teledetección, estadística y programación para entender el clima y el territorio, de los datos al visor.</p>
+      <div class="hero__actions" data-in>
+        <a class="button" href="#proyectos">Ver proyectos</a>
+        <a class="button button--quiet" href="docs/CV_GSFJ_rev_2026-01-08_ESP.pdf" download><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Descargar CV</a>
+      </div>
+      <ul class="chips" aria-label="Herramientas principales" data-in>
+        <li>R</li><li>Python</li><li>SQL</li><li>Google Earth Engine</li><li>QGIS</li><li>ArcGIS</li><li>Power BI</li>
+      </ul>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="perfil" aria-labelledby="perfil-t">
+      <div class="wrap perfil">
+        <div>
+          <h2 id="perfil-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>Sobre mí</h2>
+          <div class="prose" data-reveal>
+            <p>Soy especialista en análisis estadístico aplicado, ciencia de datos y gestión de información territorial. Recopilo, depuro, valido y analizo datos cuantitativos y geoespaciales, y desarrollo indicadores, análisis exploratorio y modelos predictivos con R, Python, SQL, Power BI y Excel.</p>
+            <p>Manejo a nivel avanzado QGIS, ArcGIS (Desktop, Pro y Online) y Google Earth Engine para producir cartografía operativa, visores y reportes técnicos. He trabajado para el INE, universidades y servicios sectoriales, y en proyectos financiados por ANID, CORFO, FIA y FONDECYT.</p>
+            <p>Como docente universitario enseño análisis de datos, estadística, SIG y programación en pre y postgrado. Me caracterizan la rigurosidad metodológica, el orden en la gestión de datos y la capacidad de comunicar resultados a equipos interdisciplinarios.</p>
+          </div>
+        </div>
+        <dl class="stats">
+          <div data-reveal><dt><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Años de experiencia</dt><dd><span data-count="10">10</span>+</dd></div>
+          <div data-reveal><dt><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg>Cargos y proyectos</dt><dd><span data-count="23">23</span></dd></div>
+          <div data-reveal><dt><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Artículos científicos</dt><dd><span data-count="11">11</span></dd></div>
+          <div data-reveal><dt><svg class="icon" aria-hidden="true"><use href="#i-cap"/></svg>Títulos y grados</dt><dd><span data-count="4">4</span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia" aria-labelledby="exp-t">
+      <div class="wrap">
+        <h2 id="exp-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg>Experiencia</h2>
+        <ol class="timeline">
+          <li data-reveal>
+            <span class="when">2024 — hoy</span>
+            <h3>Científico de Datos Geoespaciales y Asesor Ambiental</h3>
+            <p class="org">Instituto de Ciencias y Tecnología Ambiental (ICTA)</p>
+            <p>Gestión y desarrollo de bases de datos territoriales para apoyar decisiones. Diseño de procesos de recopilación, depuración, estandarización y QA/QC de información georreferenciada, y automatización de flujos con R, Python y SQL.</p>
+          </li>
+          <li data-reveal>
+            <span class="when">2022 — hoy</span>
+            <h3>Docente Universitario en Análisis de Datos y Sistemas de Información</h3>
+            <p class="org">Universidades públicas y privadas</p>
+            <p>Docencia y coordinación de cursos aplicados de análisis de datos, estadística, SIG y programación, con laboratorios de análisis exploratorio, indicadores y comunicación técnica.</p>
+          </li>
+          <li data-reveal>
+            <span class="when">2023 — 2024</span>
+            <h3>Analista Geoespacial</h3>
+            <p class="org">Instituto Nacional de Estadísticas (INE)</p>
+            <p>Validación y actualización de bases territoriales para la planificación del Censo 2024, con controles de calidad reproducibles en R y Python.</p>
+          </li>
+          <li data-reveal>
+            <span class="when">2021 — 2023</span>
+            <h3>Analista de Datos Ambientales e Hidrometeorológicos</h3>
+            <p class="org">CITRA, Universidad de Talca</p>
+            <p>Bases de datos meteorológicas, climáticas y territoriales para investigación aplicada en gestión hídrica y agrícola; indicadores ambientales y reportes técnicos.</p>
+          </li>
+          <li data-reveal>
+            <span class="when">2021 — 2022</span>
+            <h3>Consultor Geoespacial</h3>
+            <p class="org">Centro de Estudios Avanzados en Fruticultura (CEAF)</p>
+            <p>Diseño e implementación de plataformas de información agrometeorológica y evaluación de escenarios climáticos.</p>
+          </li>
+          <li data-reveal>
+            <span class="when">2017 — 2018</span>
+            <h3>Especialista en Sistemas de Información Geográfica</h3>
+            <p class="org">Municipalidad de Estación Central</p>
+            <p>Indicadores espaciales de salud pública para el Programa Comunal de Promoción de Salud.</p>
+          </li>
+        </ol>
+        <details class="more">
+          <summary><span>Ver trayectoria completa</span><span class="more__n">17 cargos más</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <ul class="compact">
+            <li><span class="when">2022 — 2023</span><span><b>Investigador</b>, Universidad de Talca. Proyecto ANID FSEQ210004: plataforma inteligente con información meteorológica y satelital para la gestión hídrica agrícola bajo sequía.</span></li>
+            <li><span class="when">2022 — 2023</span><span><b>Profesor de cátedra</b>, Universidad de Chile. Estadística Aplicada a los RNR II, Física, Física Ambiental y Taller de Percepción Remota.</span></li>
+            <li><span class="when">2022 — 2023</span><span><b>Profesor de cátedra</b>, Universidad Mayor. Eficiencia Energética y Tecnologías de Energías Renovables.</span></li>
+            <li><span class="when">2019 — 2023</span><span><b>Profesor instructor</b>, Universidad de Chile. Fundamentos de SIG, Teledetección, Teoría de Sistemas, Física II, Física Ambiental y Percepción Remota.</span></li>
+            <li><span class="when">2019 — 2021</span><span><b>Investigador</b>, Servicio Agrícola y Ganadero. Distribución espacial de tres enfermedades exóticas animales (convenio SAG/LARES-UChile).</span></li>
+            <li><span class="when">2019 — 2021</span><span><b>Investigador</b>, Universidad de Chile. Proyecto CORFO 16PTECFS66647-5 sobre sanidad y uso eficiente de recursos en nogal.</span></li>
+            <li><span class="when">2019 — 2021</span><span><b>Investigador</b>, Universidad de Chile. Nicho ecológico de diez plagas cuarentenarias priorizadas por el SAG.</span></li>
+            <li><span class="when">2018 — 2019</span><span><b>Asistente de investigación</b>, Universidad de Talca. Proyecto FIA PYT-2017-0877: mapa diario de evapotranspiración de referencia para riego.</span></li>
+            <li><span class="when">2018 — 2019</span><span><b>Personal técnico</b>, Universidad de Concepción. FONDECYT 1181374: integridad ecológica y servicios ecosistémicos en paisajes agroforestales.</span></li>
+            <li><span class="when">2017 — 2018</span><span><b>Apoyo técnico</b>, ENAP. Microred de vigilancia ciudadana de la calidad del aire.</span></li>
+            <li><span class="when">2016 — 2019</span><span><b>Asistente de investigación</b>, Universidad de Chile. FONDECYT 1161809: microclima urbano y confort térmico en Santiago.</span></li>
+            <li><span class="when">2016 — 2017</span><span><b>Profesional de apoyo</b>, INIA. Zonificación agrometeorológica para cultivos y riego en Arica y Parinacota.</span></li>
+            <li><span class="when">2015 — 2016</span><span><b>Analista de datos</b>, Compañía Chilena de Tabaco. Zonificación del cultivo en la zona central.</span></li>
+            <li><span class="when">2011 — 2018</span><span><b>Ayudante de cátedra</b>, Universidad de Chile. SIG, Percepción Remota, Física, Teoría de Sistemas, Estadística y Programación.</span></li>
+            <li><span class="when">2011 — 2016</span><span><b>Director General</b>, Preuniversitario Popular Antumapu.</span></li>
+            <li><span class="when">2010 — 2017</span><span><b>Profesor de Matemáticas, Física y Geografía</b>, Preuniversitario Popular Antumapu.</span></li>
+            <li><span class="when">2006 — 2015</span><span><b>Mantenimiento y configuración de sistemas y redes</b>, independiente.</span></li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <section class="section section--panel" id="mapa" aria-labelledby="mapa-t">
+      <div class="wrap">
+        <h2 id="mapa-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-map"/></svg>Mi trayectoria en el mapa</h2>
+        <p class="intro" data-reveal>Dónde he trabajado y qué territorios he estudiado, año a año. Mueve la línea de tiempo o presiona reproducir.</p>
+        <div class="hmap">
+          <div class="hmap__map">
+            <svg class="chile" viewBox="0 125 240 815" role="img" aria-labelledby="chile-t">
+            <title id="chile-t">Mapa de Chile con los lugares donde he trabajado y los territorios que he estudiado</title>
+            <path class="chile__land" d="M70.6,143.6L71.0,143.4L72.1,143.3L73.2,143.3L74.7,142.8L76.2,141.9L77.2,140.5L77.6,139.3L77.6,138.2L77.2,136.8L77.0,135.8L77.6,135.4L79.0,135.2L80.1,134.2L81.0,133.4L81.2,134.8L82.7,136.6L83.2,138.7L83.6,139.0L85.7,140.0L85.8,140.2L85.4,140.6L85.2,141.1L85.4,141.8L85.7,142.8L85.9,143.7L86.1,144.6L86.4,146.0L86.5,147.3L87.1,149.2L87.2,150.4L87.2,151.1L87.6,151.8L88.4,152.6L89.6,153.4L90.5,154.4L91.1,155.1L92.0,155.6L92.6,156.1L92.9,156.4L93.0,156.7L92.7,157.0L91.7,158.3L90.3,160.2L90.3,160.5L91.6,161.9L91.8,162.4L91.8,163.2L91.4,164.2L89.9,164.5L89.6,164.7L89.6,165.0L89.9,165.5L89.9,166.4L90.4,167.4L90.1,167.8L89.6,168.3L89.6,168.7L89.7,169.2L90.3,169.7L92.5,171.1L92.7,171.3L92.7,171.5L91.8,172.4L91.7,173.0L91.8,174.0L91.9,174.7L92.2,174.9L93.3,175.2L94.7,177.5L96.0,179.6L96.0,181.4L96.1,183.5L97.0,185.1L97.1,186.5L97.4,188.0L98.4,188.9L98.8,190.7L98.9,191.7L98.9,192.3L99.6,194.3L99.7,196.0L99.5,197.2L99.6,197.9L99.6,198.4L100.3,198.8L100.6,199.1L101.6,199.2L103.1,199.2L105.6,198.8L107.5,198.4L109.6,200.6L108.7,203.6L107.2,208.5L106.1,212.3L105.9,212.8L105.7,213.5L103.2,214.6L99.6,216.1L97.7,217.0L95.4,218.0L94.9,218.9L94.2,219.3L93.4,219.9L93.2,220.6L92.5,221.0L91.8,222.5L91.8,223.6L92.2,224.4L92.9,224.7L93.2,225.7L93.4,226.3L93.9,226.8L93.7,227.3L93.3,227.6L92.6,227.7L92.1,228.7L91.5,231.0L91.4,231.8L92.0,233.9L92.4,235.1L93.4,239.2L93.5,240.3L92.2,241.9L91.7,242.9L91.5,243.7L91.5,244.4L91.6,245.0L92.7,246.9L94.0,248.7L94.6,249.6L94.6,250.8L94.3,251.5L93.6,251.8L92.1,252.3L91.5,253.0L90.8,253.1L90.2,252.5L89.5,252.7L88.6,253.2L88.3,254.3L87.5,256.4L86.8,257.0L86.3,258.5L85.4,260.8L85.0,262.1L84.8,263.1L83.9,263.8L82.9,265.0L82.1,266.3L81.8,266.6L81.2,266.7L80.8,267.8L79.3,269.5L78.9,271.4L78.4,272.5L78.3,274.3L77.5,277.7L77.3,278.5L76.5,279.1L75.4,280.4L75.1,281.4L75.5,284.3L76.2,287.2L76.2,288.6L76.0,290.5L75.8,291.4L76.2,291.7L76.9,291.9L77.2,292.6L76.6,293.1L76.4,294.0L75.8,295.1L74.2,295.5L73.6,295.1L73.4,295.4L73.5,296.1L73.1,297.0L72.2,299.3L71.7,301.4L71.4,302.3L71.5,303.1L71.8,303.5L71.8,303.9L71.3,304.4L70.9,305.2L70.4,305.3L69.9,305.1L69.4,305.6L69.3,306.6L69.0,307.9L68.9,309.3L68.7,311.2L69.3,312.5L70.2,314.9L70.8,315.5L71.5,315.4L72.1,315.9L72.5,316.5L72.0,317.5L71.3,317.6L71.2,318.2L71.4,319.4L71.7,320.7L72.4,321.2L72.7,322.9L73.4,323.4L73.3,325.5L74.0,328.0L74.8,328.7L75.1,329.1L74.9,330.2L74.3,331.0L74.1,332.4L74.4,333.4L75.1,334.4L75.7,334.4L76.5,334.1L77.4,334.5L77.5,335.4L77.7,336.1L77.2,337.1L76.7,338.9L76.6,340.7L76.7,343.4L77,345.5L77.0,346.9L77.0,347.5L76.7,347.9L76.0,348.1L75.3,348.2L74.8,348.5L74.6,349.2L74.2,350.4L73.7,351.2L72.9,352.4L72.5,353.7L72.0,354.6L72.1,355.1L71.8,356.3L71.5,357.2L70.8,360.3L70.0,361.0L69.3,361.3L69.0,361.7L69.2,362.6L70.0,362.8L70.2,363.6L70.1,364.6L70.6,365.6L70.6,366.9L71.0,369.1L70.6,370.7L70.7,372.0L70.7,373.2L70.1,374.2L68.9,374.4L68.2,375.4L67.1,376.4L67.0,377.2L66.8,377.9L66.3,378.2L65.6,378.2L65.0,378.3L64.2,379.3L63.3,379.8L63.0,380.6L63.1,381.5L62.7,382.1L62.1,383.2L61.7,384.4L62.1,385.5L62.5,387.4L62.6,388.3L62.0,389.9L61.6,390.9L62.0,392.3L62.3,393.0L62.0,394.7L61.8,395.7L62.0,397.6L62.8,399.8L63.6,401.7L63.7,403.9L63.9,405.7L64.2,407.6L65.0,408.3L65.6,409.0L65.5,409.9L65.1,411.0L64.4,411.9L62.9,412.1L61.6,412.9L60.6,413.4L59.8,414.1L59.3,414.7L59.0,415.5L59.2,418.7L59.1,419.9L58.6,421.7L58.1,423.0L57.8,423.4L57.8,424.1L57.7,424.6L57.1,424.8L56.4,424.5L56,424.7L55.6,425.1L55.9,426.2L56.2,428.1L56.6,428.9L56.5,429.5L56.3,430.9L55.8,432.0L55.1,432.0L54.7,432.4L54.5,433.2L54.7,434.2L55.6,435.0L55.9,435.6L55.8,436.3L55.1,436.6L54.7,437.2L54.3,438.4L53.8,439.9L53.2,441.0L53.1,442.4L53.9,444.0L53.8,445.6L53.7,450.1L53.7,451.6L53.9,454.2L53.6,454.9L53.4,455.5L54.2,457.4L55.1,460.5L55.3,461.7L55.2,462.5L54.0,463.2L53.1,463.5L52.5,463.0L52.1,463.2L51.7,464.1L51.2,464.8L51.0,465.6L51.5,466.5L51.8,468.2L51.2,469.0L50.8,469.9L51.0,471.0L51.1,473.0L50.8,476.3L51.2,477.5L51.8,478.1L53.6,478.8L54.9,479.1L55.3,480.2L55.1,481.1L54.5,481.6L53.5,481.9L53.5,483.4L54.3,484.8L55.3,485.8L55.5,486.7L55.5,487.6L54.8,488.4L55.7,490.0L56.1,491.1L55.7,492.0L55.1,493.3L54.6,494.0L54.6,494.7L54.4,496.1L54.3,497.5L54.5,498.4L60.2,499.1L61.4,499.3L62.2,500.2L62.1,501.3L61.4,502.4L60.9,504.5L59.8,504.9L58.7,504.3L57.5,504.5L56.4,504.6L54.9,504.7L52.9,505.0L51.7,504.7L51.6,505.5L51.9,506.8L54.6,507.2L57.1,508.0L57.8,509.4L58.8,511.1L59.8,512.1L59.9,513.7L58.3,515.5L58.1,516.7L56,517.1L55.3,517.8L55.0,520.2L55.3,522.0L56.1,522.7L56.7,523.9L56.0,525.4L54.6,526.4L53.8,527.3L54.3,528.1L55.0,529.3L55.2,530.0L55.5,531.8L55.9,534.3L55.9,535.5L55.5,536.4L54.1,537.8L53.1,538.5L52.9,540.3L52.9,541.6L52.9,542.8L53.6,543.8L53.5,544.7L52.7,544.9L51.9,545.4L51.2,547.1L49.2,548.9L48.5,549.7L48.5,551.0L47.7,552.9L47.0,554.6L46.5,556.2L46.6,557.9L47.7,558.6L48.7,560.2L49.1,562.2L48.4,564.6L46.7,565.5L45.8,566.5L45.5,567.2L45.7,569.7L45.6,570.9L45.4,572.0L45.0,572.8L44.1,573.8L42.5,574.6L41.2,575.2L40.6,575.8L39.9,577.3L39.3,578.9L39.4,580.9L35.7,581.1L35.4,582.6L34.6,583.7L34.4,585.8L35.2,587.9L35.6,589.6L34.9,591.7L35.2,593.8L35.2,595.5L36.6,597.4L37.4,599.7L37.8,601.7L38.1,603.3L38.4,604.2L39.0,605.3L39.2,606.5L40.0,606.9L41.5,605.7L42.5,605.0L43.2,604.7L45.3,604.9L46.6,604.1L47.2,604.2L47.9,604.6L48.5,605.5L49.0,607.4L49.3,609.6L48.9,611.9L48.3,612.4L48.1,613.0L48.3,614.4L49.0,615.3L48.9,616.7L48.2,619.9L47.7,621.2L48.6,622.7L49.3,623.9L50.9,624.9L52.1,626.3L53.0,627.4L52.8,629.0L53.4,629.5L55.7,629.5L59.1,629.6L64.5,629.6L69.8,629.7L75.8,629.8L78.6,631.1L81.2,632.2L84.5,632.2L87.7,633.6L90.1,634.4L91.5,634.8L93.0,635.1L93.2,636.4L86.7,634.6L85.3,633.6L84.0,633.5L81.7,634.7L80.4,637.6L79.7,638.4L78.1,639.1L76.4,639.3L70.9,642.1L68.9,642.3L67.5,643.1L66.2,644.1L65.7,646.4L65.9,647.8L64.4,652.8L64.1,655.6L64.1,657.1L64.5,659.4L64.0,663.5L62.9,664.3L60.5,665.5L58.8,664.7L56,663.9L53.9,662.4L51.3,661.3L50.4,660.6L48.1,657.5L47.9,656.5L47.7,655.2L48.9,653.3L49.6,653.2L51.5,653.3L53.1,653.0L54.1,654.0L54.4,656.1L54.0,657.3L53.6,658.0L53.7,658.5L54.8,657.8L55.4,652.9L59.3,650.5L60.6,649.2L61.8,647.0L62.0,646.4L62.1,645.6L61.3,644.9L59.5,644.0L53.6,648.5L51.0,649.7L49.2,651.0L47.2,653.4L46.8,654.1L46.3,655.6L46.1,657.3L44.1,656.5L41.0,654.1L40.4,653.1L41.0,651.9L41.9,650.8L42.0,647.3L42.3,646.1L42.9,645.1L44.1,644.0L44.7,643.7L45.2,644.2L45.3,645.0L47.2,645.0L51.1,641.9L52.7,641.8L54.8,642.5L57.1,642.1L57.6,641.7L58.0,641.0L56.3,640.2L54.6,639.7L49.8,639.4L48.8,639.7L47.4,641.4L47.0,641.0L46.7,640.2L45.1,639.6L44.3,639.7L43.5,640.5L43.7,641.7L43.2,643.1L41.8,644.3L40.7,646.4L40.8,648.1L40.7,648.9L40.4,649.4L39.6,649.9L37.1,649.6L35.7,647.8L35.2,646.7L33.6,645.4L37.0,643.8L38.2,643.0L39.3,641.0L40.1,639.7L39.6,638.8L38.9,638.8L38.9,640.2L38.2,641.4L36.6,640.8L34.3,642.5L32.8,642.1L30.5,642.6L29.3,641.7L29.1,640.5L29.5,639.3L29.1,637.2L28.4,636.7L27.8,636.8L27.5,635.6L26.8,633.5L26.5,632.9L26.1,631.9L26.5,631.6L27.3,631.9L28.0,632.6L29.1,632.6L31.4,634.0L32.4,633.7L32.9,633.4L33.1,632.2L33.1,631.1L33.5,631.1L34.9,632.5L35.7,632.4L37.2,632.8L38.0,632.6L39.4,632.1L41.6,630.5L42.7,629.0L43.3,628.7L44.0,628.9L44.5,629.4L44.5,630.5L45.0,631.5L45.7,632.4L45.9,633.4L45.8,634.4L44.5,635.8L44.2,636.4L44.7,636.9L45.2,636.6L45.9,635.9L46.3,635.0L46.4,634.4L46.5,633.7L46.4,632.8L45.4,630.4L45.3,629.8L45.3,628.7L46.4,627.6L46.8,626.8L46.8,625.3L46.2,624.2L43.7,621.8L39.5,619.3L39.0,619.6L38.7,620.0L39.1,620.4L39.7,620.5L43.4,622.5L44.4,623.7L45.0,624.0L45.8,624.8L45.6,626.0L41.8,627.1L38.8,629.5L36.6,631.0L35.0,630.4L34.3,628.9L33.5,627.0L32.4,625.9L31.7,626.0L31.2,625.8L30.7,625.2L29.8,625.7L27.8,624.3L27.3,623.7L28.7,621.9L30.3,622.6L30.7,617.3L30.2,616.1L28.1,614.8L27.1,615.0L25.7,614.8L24.8,614.2L23.7,614.0L22.8,613.6L21.6,612.8L20.2,612.4L18.2,609.1L17.4,607.4L17.0,605.5L19.9,605.4L21.7,605.1L22.1,604.3L21.5,602.9L20.6,601.7L21.3,600.5L22.1,599.7L23.0,600.1L25.3,602.0L25.7,603.3L27.3,607.2L27.7,607.6L27.9,607.9L31.3,610.2L31.7,610.2L31.5,608.3L32.5,605.7L33.4,604.9L33.9,604.9L33.9,604.5L33.0,603.5L33.5,602.1L33.2,602.0L32.4,602.9L30.7,607.3L29.8,608.1L28.4,606.1L27.6,604.7L27.2,604.2L27.4,602.0L30.1,602.4L29.2,601.7L26.0,600.4L25.2,599.7L24.6,599.5L23.6,598.0L22.3,596.7L24.6,594.4L25.7,592.8L29.3,593.6L30.0,593.2L29.4,592.0L28.7,592.3L27.6,591.6L25.8,589.4L25.9,588.3L26.2,586.2L26.9,585.8L28.4,585.4L30.0,586.0L30.7,586.6L31.4,586.3L30.7,584.8L29.6,584.2L28.4,583.2L28.6,582.0L28.9,581.0L29.3,579.9L29.5,578.4L29.3,577.2L29.7,576.7L30.2,576.4L30.2,576.0L29.2,576.1L28.8,577.5L28.7,578.9L27.9,580.0L27.6,581.2L27.4,582.7L27.0,584.4L26.0,583.7L25.5,583.1L25.3,582.6L25.4,581.8L25.2,576.4L25.1,572.0L25.6,568.6L26.9,567.2L27.5,566.8L28.0,567.0L28.8,567.0L29.4,566.5L27.6,565.6L26.4,566.1L25.6,566.8L24.1,566.3L23.8,564.5L22.9,563.0L22.7,561.1L22.8,558.3L24.9,558.5L26.7,559.1L31.2,559.0L34.9,561.7L36.6,561.3L36.5,560.8L35.2,560.2L34.5,558.6L34.0,558.2L33.8,557.3L33.7,556.3L32.8,552.4L32.4,552.5L32.0,553.8L31.3,556.0L30.2,557.1L28.6,557.5L26.9,557.8L25.5,557.4L25.2,556.4L25.2,555.4L24.6,554.9L23.0,554.4L22.5,554.2L22.0,553.2L22.8,551.8L23.4,550.9L24.1,551.1L24.9,551.5L25.8,552.6L26.7,552.8L27.8,551.9L28.0,551.3L27.3,550.9L26.7,550.8L25.8,550.3L24.0,548.6L24.9,546.9L27.0,544.9L27.7,544.4L27.1,542.7L27.8,540.9L27.1,539.4L25.9,537.8L24.3,537.4L24.0,537.9L23.9,538.6L24.1,539.1L24.0,539.4L23.6,539.4L21.6,539.1L20.2,538.0L18.0,537.0L17.7,536.3L17.5,535.1L18.2,533.2L17.8,533.2L16.4,534.7L14.2,535.4L12.5,535.7L11.8,536.3L11.6,536.8L12.0,537.1L12.9,537.2L13.6,539.0L13.5,539.8L13.1,540.2L12.3,540.4L10.8,539.0L10,537.6L10,536.4L10.5,534.8L13.0,532.7L13.7,531.8L15.2,530.8L17.2,528.6L18.9,527.3L18.1,526.3L17.2,524.8L17.3,522.6L20.8,521.8L22.3,522.1L24.2,522.1L25.3,521.6L26.0,521.5L27.7,520.9L28.4,520.0L28.6,519.4L28.6,518.8L28.4,518.2L28.1,516.4L28.4,515.8L29.1,515.2L30.0,514.9L30.4,515.0L31.5,515.6L31.3,516.5L30.9,517.6L30.0,522.0L29.5,523.0L28.8,523.8L29.3,525.6L28.6,526.9L25.4,528.2L25.0,528.3L25.3,528.8L27.1,528.7L28.5,528.4L29.9,527.2L30.3,525.5L30.9,522.2L31.7,521.7L32.6,521.6L33.0,522.4L32.8,524.2L32.8,525.9L31.7,530.9L30.2,533.0L30.1,533.5L30.2,534.2L31.3,534.1L32.1,533.0L32.8,531.6L33.4,529.6L33.3,528.2L33.5,527.3L33.8,524.5L34.2,523.0L34.2,521.0L33.4,520.3L32.3,519.8L32.0,518.6L32.6,516.1L34.7,516.2L36.6,514.6L37.9,514.0L38.7,514.1L41.2,515.7L41.7,515.7L41.6,515.1L41.3,514.7L40.2,514.2L38.4,512.5L35.9,512.2L36.3,510.0L36.8,508.0L38.0,507.7L40.1,507.1L43.9,504.1L44.6,501.8L44.8,499.2L43.0,498.6L41.0,496.9L39.4,496.1L37.9,495.0L38.2,493.3L38.4,490.6L40.2,490.1L41.0,486.4L39.8,483.6L40.1,481.6L41.7,479.8L41.9,478.6L42.4,477.2L43.7,477.1L43.8,476.4L43.7,475.0L42.7,473.5L42.7,471.3L43.6,468.8L44.9,468.9L45.2,468.8L44.2,467.3L43.5,465.6L43.6,464.9L44.3,464.3L45.2,464.0L46.1,464.9L47.5,467.7L47.7,466.9L47.2,464.1L46.7,460.6L45.3,461.1L44.0,460.9L43.5,460.3L43.0,459.5L43.5,458.6L43.9,457.9L44.9,457.0L46.9,456.7L48.3,455.5L48.8,453.2L48.3,453.5L47.5,455.5L46.2,456.2L45.6,456.1L44.8,455.7L43.2,453.9L42.3,453.5L41.5,453.5L40.8,453.9L39.0,457.0L38.2,457.6L35.0,457.8L33.8,457.4L32.6,457.0L32.7,456.2L33.1,455.4L33.8,455.0L33.8,454.5L32.8,454.4L31.7,453.5L31.2,452.4L30.9,450.5L29.9,447.4L29.7,445.2L30.4,443.7L32.0,437.6L32.5,434.5L33.3,431.8L33.3,430.0L35.4,428.4L36.3,427.4L38.1,422.0L38.4,419.0L35.4,410.2L35.0,408.5L34.9,406.4L35.6,403.0L35.7,401.7L35.0,399.8L33.4,396.7L33.3,395.1L34.0,393.5L33.4,391.5L33.7,390.3L34.1,389.3L36.7,389.8L37.9,389.6L38.5,389.0L39.0,387.4L39.2,384.8L39.4,383.7L39.6,382.2L40.9,381.5L41.3,380.0L42.4,377.9L43.5,372.1L44.6,370.6L45.7,369.0L45.3,366.5L46.0,365.4L46.6,364.6L47.2,363.1L48.0,361.7L49.9,359.6L50.3,357.2L51.8,352.9L52.1,350.2L52.5,348.4L52.4,346.7L53.3,344.6L54.1,342.9L54.4,341.9L56.3,339.6L56.6,337.8L55.9,336.5L55.9,334.6L55.4,331.9L56.6,331.0L57.1,330.2L58.7,326.0L58.6,324.3L59.0,322.3L58.0,319.9L57.8,314.4L57.3,310.3L56.3,305.9L56.4,303.4L55.8,300.4L55.8,298.6L56.2,294.7L59.3,292.2L59.9,289.4L60.3,285.7L60.2,283.0L59.8,281.7L58.3,279.7L57.9,276.2L58.2,275.2L59.5,274.2L60.4,272.9L60.8,270.7L61.8,269.0L62.1,264.9L62.9,261.7L63.3,260.6L64.5,259.1L64.7,258.8L64.9,257.7L64.9,255.2L65.1,253.6L66.0,250.5L66.1,249.1L67.2,246.0L67.5,243.8L68.0,242.6L67.8,241.2L68.1,238.3L67.3,236.6L67.2,235.6L68.1,232.6L68.7,231.9L69.7,230.4L70.2,228.9L70.3,227.9L68.9,222.9L68.8,221.2L69.1,217.2L69.5,214.7L69.4,212.7L69.5,211.6L69.8,210.3L70.6,208.8L70.8,207.6L70.6,207.2L69.5,206.6L68.6,205.2L68.5,203.8L68.8,202.7L68.9,201.3L70.2,201.0L70.9,200.2L71.5,198.7L72.4,195.1L72.7,190.6L73.2,187.9L73.6,186.5L73.9,183.7L74.4,181.9L74.4,180.3L74.4,179.0L73.1,172.5L73.1,170.1L73.6,166.4L73.6,161.3L73.6,160.1L73.1,158.9L72.9,157.4L72.2,154.7L71.5,149.4L71.5,146.6L71.2,144.2ZM91.1,641.9L91.0,647.5L91.0,653.1L91.0,658.4L91.0,663.7L91.0,668.8L90.9,674.1L90.9,680.1L90.8,684.6L89.1,684.6L88.6,685.0L85.9,685.7L81.2,684.7L80.1,683.8L78.5,681.8L78.0,682.3L76.5,683.2L75.0,683.8L73.8,683.9L72.6,683.1L72.4,682.7L72.1,682.5L69.6,683.7L66.9,682.5L64.7,681.8L61.3,681.4L58.8,679.9L54.3,680.1L53.6,679.6L53.3,678.1L53.5,677.5L54.5,677.1L54.7,676.3L55.7,676.5L56.9,677.5L57.3,677.5L58.1,676.5L59.4,675.6L59.8,675.5L62.1,676.6L63.0,676.5L64.3,676.0L64.5,675.6L64.7,674.8L65.1,674.4L66.2,674.2L67.3,674.6L67.5,675.9L67.3,677.3L68.8,677.7L70.6,677.6L71.8,678.1L72.0,677.3L70.0,675.1L69.2,673.7L68.1,672.9L66.6,672.5L65.5,669.9L65.5,667.7L65.4,665.5L68.0,664.3L67.4,662.5L68.2,661.1L69.3,660.5L70.3,665.7L71.0,667.5L70.1,667.9L68.1,667.9L69.2,670.4L71.0,671.3L72.5,673.2L72.6,674.6L73.4,675.2L75.5,675.2L76.9,675.0L77.5,674.0L78.3,673.7L79.7,674.9L82.0,675.8L82.6,676.3L83.1,677.4L83.1,678.4L83.2,679.0L83.9,678.7L84.9,677.3L85.4,676.7L85.9,676.5L86.3,676.2L86.3,675.8L84.6,674.7L75.5,669.9L74.4,668.0L73.6,665.6L73.6,663.1L74.3,662.4L75.9,661.4L78.9,660.0L82.4,658.1L82.8,657.7L82.7,656.5L82.3,655.6L81.0,655.0L79.5,654.9L78.1,654.9L76.8,655.2L74.3,656.5L72.9,656.4L71.6,655.7L70.6,654.3L70.1,652.4L70.1,651.2L70.3,650.1L70.9,649.0L71.7,648.5L72.4,648.6L73.1,648.3L73.5,647.9L73.9,647.4L73.7,647.0L73.5,646.6L72.4,645.8L72.0,645.0L71.0,643.8L71.5,643.5L73.2,643.3L74.4,644.1L75.4,645.1L76.1,645.1L76.7,644.7L78.1,643.4L79.2,641.8L80.3,640.0L81.1,638.9L82.1,638.8L84.9,642.2L85.9,642.3L89.2,640.5L89.6,640.6L90.7,641.5ZM108.8,690.6L108.5,691.4L107.8,692.4L106.8,693.2L105.8,693.4L105.2,693.0L104.8,692.3L104.6,691.5L104.4,691.1L104.1,691.1L103.6,691.1L103.0,691.4L101.8,692.4L101.3,692.6L100.9,692.7L97.5,691.9L97.1,691.6L96.7,691.0L96.3,688.9L94.8,687.1L97.0,686.1L99.7,686.1L104.9,686.9L106.9,687.0L108.5,688.8L108.8,689.8ZM32.1,481.9L31.2,482.2L30.5,482.3L29.6,482.1L28.2,482.1L26.8,481.5L25.5,480.6L25.1,480.1L25.2,479.4L26.2,477.7L27.1,474.6L27.7,470.1L27.2,468.4L27.3,467.7L27.5,466.8L27.6,466.0L27.6,465.1L27.7,464.3L28.7,462.6L28.8,461.8L28.8,461.0L29.3,459.3L29.2,458.7L28.8,458.2L29.1,457.8L32.6,459.0L34.9,459.3L35.0,460.6L35.5,461.7L35.8,463.5L36.1,463.9L35.9,465.2L34.9,465.8L35.0,467.0L35.6,468.1L34.7,468.6L33.7,468.8L33.5,469.1L32.8,469.4L31.9,470.0L32.2,470.6L33.3,471.9L34.5,472.8L35.1,474.1L36.0,475.5L35.6,476.4L34.8,477.6L33.5,478.5L32.4,479.0L32.5,481.1ZM24.1,578.2L24.1,580.8L24.0,583.4L23.5,586.6L23.6,587.2L24.1,587.4L24.3,587.8L24.1,589.4L23.8,590.7L23.3,591.8L23.0,593.1L22.7,593.4L21.5,593.6L20.8,593.5L20.2,592.0L20.1,591.1L20.1,589.9L19.4,588.4L19.4,587.8L19.6,586.7L20.2,586.2L20.3,584.7L20.6,584.2L21.2,583.6L21.3,583.3L21.2,583.0L21.0,583.0L18.5,585.0L18.3,585.5L18.2,586.2L18.1,588.8L17.7,590.3L17.3,590.6L16.1,590.7L14.6,590.5L12.9,589.2L11.8,589.5L11.5,587.9L12.1,586.5L14.2,586.6L14.5,584.3L13.9,583.7L13.1,582.8L12.7,581.9L13.1,581.3L14.3,580.3L14.9,580.2L15.6,580.7L17.0,580.3L17.0,578.9L15.6,578.2L15.9,577.1L17.6,576.0L18.6,574.9L18.7,573.7L18.3,572.5L18.4,572.0L19.2,570.9L20.4,570.5L21.0,570.5L22.0,571.2L23.0,571.3L23.2,571.5L23.4,572.3ZM12.2,571.5L10.9,571.5L10.6,568.4L12.1,563.9L12.2,562.3L11.7,561.0L11.5,559.9L11.6,559.5L13.6,558.6L14.2,559.6L14.9,562.1L16.3,565.6L16.2,569.0L15.5,569.9L13.1,570.8ZM25.1,647.0L25.3,647.2L25.7,647.2L26.4,647.5L28.8,647.8L30.9,648.7L32.0,649.6L33.5,649.8L34.7,650.9L35.2,651.2L35.8,651.2L37.4,653.2L37.5,653.5L39.3,655.0L39.4,655.3L38.4,655.4L36.3,654.6L35.2,654.6L34.5,654.4L34.3,654.2L34.1,653.3L33.9,652.9L31.9,650.8L31.0,650.3L29.6,650L27.9,650.2L26.8,650L26.4,650.0L24.8,648.4L23.1,647.0L22.4,645.4L21.4,644.1L21.3,643.7L21.8,643.5L22.9,644.2L24.1,645.4L24.7,645.9ZM23.0,568.5L22.8,568.9L21.4,568.7L18.9,569.1L17.9,567.5L17.5,565.1L17.1,564.5L16.6,563.1L16.2,562.2L15.6,560.7L15.4,559.2L15.2,558.8L15.8,557.9L18.3,557.0L19.2,555.6L20.0,555.8L19.8,558.7L20.3,559.6L21.2,560.5L21.3,560.8L21.5,561.9L21.9,563.4L22.5,564.2L22.6,564.7L22.6,565.1L22.4,565.6ZM41.8,657.7L42.2,659.3L42.3,659.6L43.2,659.3L44.6,659.2L46.9,659.8L47.2,660.0L48.2,661.7L48.9,662.4L50.1,664.0L48.9,665.1L48.2,666.6L48.2,667.4L47.7,667.8L47.0,668.3L46.0,669.2L44.7,669.3L43.4,669.8L42.8,670.2L42.5,670.2L42.0,670.0L41.6,669.6L41.4,669.0L42.3,668.6L43.5,666.9L43.7,665.1L42.5,664.8L41.7,665.1L41.1,665.1L40.5,664.5L40.1,665.3L40.0,666.1L40.1,667.4L40.0,667.7L39.6,668.0L38.5,667.5L37.5,666.7L37.4,666.2L37.6,664.6L37.6,663.7L37.4,662.5L37.3,662.4L36.8,662.4L35.6,662.6L34.3,661.1L33.6,659.4L31.3,659.0L33.1,656.7L35.9,656.3L36.8,657.5L39.8,658.3L39.7,657.1L39.7,656.6L40.1,656.1L40.4,656.0L40.7,656.4L41.3,656.6L41.6,657.0ZM20.1,622.8L20.6,626.4L20.9,626.9L22.1,627.2L23.4,629.0L23.4,629.5L21.9,632.6L21.5,634.9L19.8,634.7L19.0,632.5L17.9,630.4L17.5,627.9L16.8,625.8L18.0,624.5L19.0,624.8L19.1,623.2ZM78.8,685.9L88.0,687.9L90.8,686.7L93.0,686.7L93.7,688.4L91.4,690.1L91.2,690.6L91.6,691.1L93.9,691.4L94.5,691.9L95.0,692.6L94.6,693.7L94.5,694.2L94.8,694.7L96.5,696.3L97.2,697.1L97.6,697.9L97.7,699.3L97.7,700.5L97.3,700.6L96.5,700.3L95.6,699.6L94.9,698.0L94.4,697.7L92.9,697.3L91.5,696.6L90.3,696.6L89.3,696.2L88.3,696.6L88.0,696.0L87.6,695.0L87.6,694.5L88.1,692.8L88.1,692.3L87.8,692.3L86.7,692.6L86.3,692.4L85.1,691.2L84.6,690.9L83.4,690.8L82.7,693.0L82.7,693.6L83.4,694.9L84.7,697.1L84.0,697.1L82.1,696.4L81.6,696.0L81.0,695.0L79.8,694.3L79.4,693.9L79.3,693.5L79.3,692.1L79.0,691.9L77.4,692.3L77.0,691.9L76.9,691.3L76.7,691.0L75.6,690.4L75.5,690.1L76.0,689.7L76.2,688.7L76.7,685.1ZM59.4,668.4L62.0,670.0L63.6,670.0L63.6,670.9L63.8,672.6L63.6,673.3L62.9,673.9L62.6,674.9L62.3,675.1L60.4,673.9L58.5,672.3L57.5,672.6L56.2,672.2L55.2,672.3L54.5,673.2L53.0,673.7L52.7,671.8L51.4,670.1L50.0,668.7L50.8,666.6L51.7,666.2L52.5,665.5L55.8,666.3L57.6,666.9ZM32.6,498.6L32.0,499.3L31.1,499.4L29.7,500.2L29.5,500.9L29.5,501.7L30.5,502.8L30.9,504.0L31.5,505.8L31.9,507.5L31.9,508.0L31.9,508.9L32.6,510.3L32.7,510.9L32.6,511.5L32.4,512.7L32.1,512.8L31.4,512.9L31.4,513.6L31.2,513.9L29.3,514.0L28.4,513.6L28.5,511.5L27.3,510.7L26.5,509.3L25.5,506.9L24.7,506.2L23.8,504.3L22.5,502.7L24.0,501.6L23.8,499.9L24.7,499.2L26.0,498.6L27.1,499.1L28.0,498.9L28.4,498.5L28.3,496.7L28.6,495.2L29.6,494.5L30.7,494.4L31.1,495.2L31.6,496.0L32.9,496.7L32.9,497.5ZM41.1,504.8L38.3,506.1L37.0,505.6L36.4,504.7L36.1,503.9L35.9,502.5L36.4,501.8L37.3,500.8L37.8,500.1L37.9,499.3L37.8,498.6L38.0,497.9L38.6,497.6L40.6,498.4L42.8,499.6L43.5,500.4L43.7,501.1L42.7,502.5L42.1,503.7ZM17.6,506.6L17.3,506.8L16.9,506.7L16.6,506.2L16.4,505.4L16.8,505.0L17.1,505.0L17.5,505.5L17.7,506.2ZM14.6,605.5L14.3,607.1L13.3,607.0L13.0,606.6L12.9,605.5L12.6,605.0L13.0,603.9L13.3,602.8L13.2,601.9L14.6,601.9L16.3,602.1L16.7,602.4L16.2,603.2L15.7,603.7L14.7,604.0ZM16.8,572.8L16.7,574.1L15.0,576.8L13.6,578.4L12.3,579.6L11.4,579.6L10.7,579.0L11.5,578.0L12.5,577.1L12.1,575.8L11.8,575.4L11.4,575.3L10.7,574.6L10.9,573.6L11.4,573.1L11.9,572.8L12.4,573.0L14.7,572.3L15.4,571.8L16.7,571.6ZM16.8,555.5L15.9,555.8L15.8,555.2L15.1,554.3L15.7,553.6L17.0,553.0L18.0,553.1L18.9,553.6L19.0,554.2L17.5,554.9L17.1,555.3ZM21.8,486.0L20.2,486.3L19.9,485.9L19.9,485.4L20.1,485.1L21.0,484.9L21.5,485.2L21.8,485.6L21.9,485.9ZM33.7,505.5L33.3,505.6L33.0,505.6L32.7,505.1L32.6,504.3L31.8,503.2L31.6,502.7L31.6,502.1L32.0,501.2L32.7,501.0L33.1,501.0L33.6,502.1L33.8,503.2L33.9,504.4ZM23.1,616.3L23.1,617.9L22.7,618.3L22.4,618.5L21.6,618.0L21.1,618.0L20.4,618.8L19.7,619.2L18.8,619.1L17.5,618.6L16.4,620.9L15.9,621.7L14.7,622.7L14.6,621.5L15.3,619.6L15.6,618.3L16.3,616.4L17.6,617.1L19.4,616.4L21.1,615.1L22.5,615.0L23.0,615.8ZM17.4,598.6L15.2,600.0L14.5,599.4L12.9,599.4L13.3,597.8L13.5,596.7L13.7,596.3L13.8,595.3L14.3,593.5L15.6,594.1L16.6,594.2L18.0,594.8L19.5,595.2L19.9,596.8L18.5,597.5ZM31.7,489.5L31.9,490.3L31.4,490.4L30.6,490.3L30.2,490.9L30.0,491.0L28.1,490.5L27.9,490.2L27.9,489.4L29.9,489.4L31.2,488.8L31.3,488.9ZM27.9,628.4L27.5,628.6L26.3,628.2L25.6,627.8L24.6,626.8L24.5,625.8L24.1,624.6L24.3,624.6L25.4,625.1L25.8,625.4L26.3,626.2L28.0,627.3L28.2,627.6L28.1,628.0ZM25.9,519.6L25.3,520.4L24.2,520.7L23.1,520.1L21.7,520.4L21.6,519.2L22.1,518.1L23.1,516.9L23.9,515.3L23.8,513.0L24.3,512.5L24.7,511.6L26.0,511.1L26.2,512.9L25.9,515.9L26.7,517.7L26.9,518.3L26.7,519.0ZM103.1,705.5L102.7,705.5L101.7,705.1L100.2,705.0L100.0,704.8L100.0,704.5L100.2,704.2L101.0,704.0L103.5,704.2L103.8,704.3L103.9,704.6L103.5,705.2ZM115.8,692.1L114.9,693.0L114.2,692.9L114.0,692.6L113.9,692.2L114.0,691.8L114.3,691.4L115.0,690.9L115.2,690.8L116.2,691.3ZM64.0,684.9L64.5,686.1L64.7,686.4L66.1,686.9L66.8,686.6L68.3,686.4L69.2,685.9L70.6,685.7L72.1,688.8L72.0,689.8L70.7,690.8L69.9,691.0L69.1,690.7L69.2,690.2L69.0,689.8L68.5,689.2L68.0,689.2L67.2,689.6L66.8,689.6L66.0,689.1L64.6,688.7L64.3,688.3L64.3,687.6L64.0,687.3L62.5,686.2L61.6,685.4L60.7,685.2L60.4,685.3L60.2,685.8L59.5,686.2L59.3,686.1L59.0,685.8L58.9,685.3L59.2,684.3L59.6,684.2L61.6,684.4L62.9,684.9ZM106.4,703.2L106.0,703.3L105.7,703.0L105.2,702.7L103.3,702.1L103.3,701.8L103.5,701.3L103.8,700.9L104.6,700.4L105.2,699.3L105.5,699.4L105.7,699.8L106.2,701.4L106.7,702.5L106.7,702.9Z"/>
+            <path class="chile__land" d="M214.6,893.6L215.1,893.9L215.4,893.8L215.8,893.4L216.2,892.5L217.6,891.3L218.8,891.2L218.4,892.4L221.5,894.7L221.2,896.5L221.8,898.0L220.6,898.4L219.6,899.9L220.4,900.5L220.9,901.8L219.9,902.1L217.7,901.3L216.5,901.5L216.6,900.3L216.3,899.9L214.9,900.1L214.3,902.7L213.9,903.0L213.4,902.5L213.8,900.8L213.2,900.6L212.6,900.6L210.9,901.9L210.4,901.9L209.4,900.4L212.6,898.5L211.3,897.5L211.0,896.4L211.2,894.7L210.0,894.9L208.8,895.6L208.3,895.7L207.9,895.1L208.0,893.9L209.0,892.0L209.7,889.9L211.2,889.0L212.1,888.2L213.2,887.8L213.7,887.1L214.8,887.1L215.4,888.7L215.4,889.7L214.9,890.8ZM241.2,870.9L241.9,871.5L244.8,871.5L245.4,871.7L246.0,872.8L246.4,874.7L245.4,875.4L240.4,875.0L238.6,874.0L237.7,874.1L235.7,875.1L234.8,876.2L231.5,877.6L230.5,877.1L230.1,875.6L230.0,874.9L230.3,874.5L230.5,874.1L230.5,873.7L231.4,872.4L235.3,870.4L240.5,869.7L241.2,870.4ZM213.1,839.5L214.6,840.2L215.9,839.7L216.6,840.2L217.1,841.6L217.0,842.1L215.1,841.9L213.3,843.5L211.2,843.2L210.9,844.5L211.4,845.2L210.8,845.8L209.0,844.5L207.5,845.0L207.1,847.2L206.4,847.6L206.1,847.7L205.5,847.1L204.3,847.0L204.2,846.7L203.5,845.8L201.4,846.8L201.9,845.7L204.7,842.7L205.1,841.8L208.3,840.1L209.8,840.5ZM153.5,904.5L152.4,907.3L154.1,907.3L155.2,906.3L156.4,905.9L157.4,907.3L155.3,908.3L153.2,910.2L152.4,911.2L151.5,911.6L150.3,911.4L149.2,911.6L148.2,913.4L147.1,914.3L146.8,913.6L146.3,913.2L144.0,912.5L143.0,911.6L142.0,910.9L141.0,910.6L141.5,909.0L142.1,907.5L145.6,905.6L145.3,905.0L145.1,904.2L147.8,903.2L147.9,902.3L147.7,901.2L148.6,900.4L149.4,899.3L150.0,899.0L151.7,899.1L152.9,900.7L152.4,902.2ZM163.3,903.3L162.5,904.4L161.8,904.6L161.2,904.1L160.4,905.7L158.7,905.2L158.1,904.8L158.5,904.6L158.8,903.9L159.7,902.5L161.2,898.8L161.5,897.7L160.2,895.8L160.0,895.2L160.3,894.1L160.8,893.3L161.9,892.5L163.3,892.5L164.0,893.2L164.0,894.5L166.4,895.8L165.9,898.3L165.0,899.9L164.9,901.9L163.5,902.7ZM245.4,822.9L243.8,823.5L243.3,822.6L243.0,821.1L242.2,820.2L242.8,819.3L251.0,820.4L250.6,820.9L246.6,821.6ZM237.3,880.1L236.3,881.3L233.8,879.5L233.1,878.4L233.4,877.6L237.4,876.8L238.5,877.2L239.0,879.0ZM221.6,907.1L220.6,907.2L219.4,906.4L219.2,905.0L219.2,904.3L220.1,903.7L220.7,903.6L224.1,901.4L225.6,900.9L224.9,902.2L225.0,903.4L224.4,904.5ZM235.1,868.5L232.8,870.8L231.7,870.7L229.5,868.9L228.9,868.0L228.8,867.6L230.2,866.0L234.2,866.6L235.1,866.8L235.1,866.9L235.2,867.8ZM220.0,887.1L220.2,887.6L222.5,887.3L223.1,888.0L221.8,888.9L221.5,888.7L220.4,889.0L217.3,888.3L216.5,887.3L219.3,886.7ZM182.8,855.4L183.3,855.7L188.3,855.2L189.9,856.9L191.7,856.8L187.4,860.1L186.3,859.1L185.9,858.4L185.6,856.9L182.9,857.3L181.9,856.9L180.8,858.0L178.6,858.4L177.8,858.4L176.8,857.3L176.7,856.2L178.8,856.2L180.3,854.8L180.8,853.3L181.6,853.7ZM257.9,824.7L257.4,824.9L256.6,824.0L256.5,823.5L257.3,822.4L258.1,821.0L258.4,820.8L258.2,823.7ZM203.3,849.1L200.7,850.2L199.4,849.0L199.1,848.6L200.7,847.5L201.5,847.7L201.8,848.1L202.8,848.2ZM197.0,852.6L195.4,852.8L194.3,851.3L193.8,850.4L195.9,850.3L196.9,850.7L197.4,851.8ZM184.2,865.7L183.6,865.9L182.9,865.7L182.9,866.1L183.5,866.7L182.8,866.9L182.0,866.4L181.5,865.2L181.9,864.1L182.6,863.8ZM182.5,888.7L181.0,889.6L180.2,889.3L178.8,888.2L180.7,887.9L180.8,884.8L181.7,883.6L183.5,884.2L182.4,885.9L182.1,887.1L182.4,888.2ZM167.6,894.2L166.5,894.3L166.8,892.8L167.8,891.9L169.3,891.3L168.3,892.8L168.0,893.6ZM152.0,915.0L150.1,916.3L149.2,916.3L150.3,913.3L151.4,913.2L153.1,911.5L153.5,911.7L152.6,913.1ZM160.0,868.2L159.5,868.3L159.7,867.3L161.0,864.6L163.4,863.3L163.1,864.4L162.3,865.7ZM123,942.0L120.5,943.1L119.2,942.7L119.1,941.6L119.4,940.0L120.6,939.3L120.4,937.0L121.2,936.1L121.5,934.4L123.1,933.2L125.3,933.8L125.0,935.9L125.0,936.7L123.7,937.3L123.3,937.6L123.0,939.1L123.1,941.2Z"/>
+            <circle class="study" data-loc="aricaParinacota" cx="80" cy="158.8" r="9"/>
+            <circle class="study" data-loc="atacama" cx="83.4" cy="215.6" r="9"/>
+            <circle class="study" data-loc="huasco" cx="65.1" cy="272" r="9"/>
+            <circle class="study" data-loc="santiago" cx="68" cy="336.9" r="9"/>
+            <circle class="study" data-loc="chileCentral" cx="61.6" cy="352.8" r="9"/>
+            <circle class="study" data-loc="lagos" cx="45.6" cy="427.6" r="9"/>
+            <circle class="study" data-loc="patagonia" cx="45.6" cy="549.8" r="9"/>
+            <circle class="study" data-loc="antartica" cx="202.6" cy="846.6" r="9"/>
+            <g class="work" data-loc="arica"><path class="work__lead" d="M72 145.2 L124 146"/><circle cx="72" cy="145.2" r="4.5"/><text x="128" y="150">Arica</text></g>
+            <g class="work" data-loc="santiago"><path class="work__lead" d="M68 336.9 L124 318"/><circle cx="68" cy="336.9" r="4.5"/><text x="128" y="322">Santiago</text></g>
+            <g class="work" data-loc="rengo"><path class="work__lead" d="M65.5 350.1 L124 336"/><circle cx="65.5" cy="350.1" r="4.5"/><text x="128" y="340">Rengo</text></g>
+            <g class="work" data-loc="talca"><path class="work__lead" d="M56.4 364.4 L124 354"/><circle cx="56.4" cy="364.4" r="4.5"/><text x="128" y="358">Talca</text></g>
+            <g class="work" data-loc="concepcion"><path class="work__lead" d="M40.4 384.2 L124 372"/><circle cx="40.4" cy="384.2" r="4.5"/><text x="128" y="376">Concepción</text></g>
+            </svg>
+          </div>
+          <div class="hmap__side">
+            <div class="hmap__controls">
+              <button class="hmap__play" type="button" aria-label="Reproducir la línea de tiempo"><svg class="icon i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true"><use href="#i-pause"/></svg></button>
+              <label class="hmap__range"><span class="sr">Año</span><input type="range" min="2010" max="2026" step="1" value="2026" aria-valuetext="2026"></label>
+            </div>
+            <div class="hmap__ticks" aria-hidden="true"><span>2010</span><span>2014</span><span>2018</span><span>2022</span><span>2026</span></div>
+            <p class="hmap__year" aria-live="polite">2026</p>
+            <div class="hmap__legend"><span><i class="dot dot--work"></i>Lugar de trabajo</span><span><i class="dot dot--study"></i>Territorio estudiado</span></div>
+            <h3 class="hmap__h">Cargos activos</h3>
+            <ul class="hmap__roles"></ul>
+            <h3 class="hmap__h">Estudios publicados hasta ese año</h3>
+            <ul class="hmap__studies"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="habilidades" aria-labelledby="hab-t">
+      <div class="wrap">
+        <h2 id="hab-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>Habilidades</h2>
+        <p class="intro" data-reveal>Riguroso, metódico y comprometido con la calidad del dato. Comunico resultados técnicos a equipos interdisciplinarios y aprendo herramientas nuevas de forma continua.</p>
+        <ul class="skills">
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Análisis estadístico</h3><p class="tags"><span>R / RStudio</span><span>Python</span><span>SQL</span><span>tidyverse</span><span>Estadística inferencial</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-satellite"/></svg>SIG y teledetección</h3><p class="tags"><span>QGIS</span><span>ArcGIS Pro / Online</span><span>Google Earth Engine</span><span>Análisis espacial</span><span>Cartografía temática</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>Visualización y reportes</h3><p class="tags"><span>Power BI</span><span>R Shiny</span><span>Excel avanzado</span><span>R Markdown</span><span>Jupyter</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Programación</h3><p class="tags"><span>Python</span><span>R</span><span>JavaScript</span><span>Java</span><span>HTML / CSS</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg>Modelación y machine learning</h3><p class="tags"><span>Random Forest</span><span>SVM</span><span>Machine learning aplicado</span><span>Stella</span><span>Vensim</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg>Gestión de datos y QA/QC</h3><p class="tags"><span>Depuración</span><span>Control de calidad</span><span>Estandarización</span><span>Validación espacial</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-workflow"/></svg>Automatización de flujos</h3><p class="tags"><span>Flujos reproducibles R / Python</span><span>Git / GitHub</span><span>n8n</span><span>Notion</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-bot"/></svg>IA aplicada al desarrollo</h3><p class="tags"><span>Claude</span><span>Codex</span><span>Google Antigravity</span></p></li>
+          <li data-reveal><h3><svg class="icon" aria-hidden="true"><use href="#i-presentation"/></svg>Comunicación técnica y docencia</h3><p class="tags"><span>LaTeX</span><span>Markdown</span><span>Redacción académica</span><span>Material docente</span></p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos" aria-labelledby="proy-t">
+      <div class="wrap">
+        <div class="head-row">
+          <h2 id="proy-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg>Proyectos</h2>
+          <a class="link-arrow" href="https://github.com/djwillichile" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Todo en GitHub</a>
+        </div>
+        <article class="feature" data-reveal>
+          <div class="feature__media">
+            <video muted loop playsinline preload="none" poster="assets/video/salar-atacama-poster.jpg" width="854" height="480" aria-label="Serie temporal satelital del Salar de Atacama, de marzo de 2025 a febrero de 2026"><source src="assets/video/salar-atacama.webm" type="video/webm"></video>
+          </div>
+          <div class="feature__text">
+            <p class="kind"><svg class="icon" aria-hidden="true"><use href="#i-cap"/></svg>Tesis de magíster · Universidad de Chile · 2022</p>
+            <h3>Precipitación mensual en alta resolución en el desierto de Atacama</h3>
+            <p>Un método para estimar la distribución espacial de la lluvia en el desierto más seco del mundo, combinando productos CHIRPS, estaciones meteorológicas y técnicas de reducción de escala.</p>
+            <div class="feature__links">
+              <a class="button" href="https://djwillichile.github.io/tesis-atacama-chirps/" target="_blank" rel="noopener">Explorar la tesis<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="button button--quiet" href="https://repositorio.uchile.cl/bitstream/handle/2250/200362/2022_Guillermo_Fuentes_Jaque.pdf" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>PDF</a>
+            </div>
+          </div>
+        </article>
+        <ul class="projects">
+          <li data-reveal><a class="project" href="https://djwillichile.github.io/tempify/" target="_blank" rel="noopener">
+            <span class="project__img"><img src="assets/img/p-tempify.jpg" width="1200" height="750" alt="Sitio de tempify" loading="lazy"></span>
+            <span class="kind"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Paquete Python</span>
+            <span class="project__name">tempify<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            <span class="project__desc">Convierte series mensuales de rásters en diarias con interpolación que preserva la media.</span>
+          </a></li>
+          <li data-reveal><a class="project" href="https://djwillichile.github.io/spEnviroDistr/" target="_blank" rel="noopener">
+            <span class="project__img"><img src="assets/img/p-spenvirodistr.jpg" width="1200" height="750" alt="Documentación de spEnviroDistr" loading="lazy"></span>
+            <span class="kind"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Paquete R</span>
+            <span class="project__name">spEnviroDistr<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            <span class="project__desc">Análisis espacial y distribución de datos ambientales.</span>
+          </a></li>
+          <li data-reveal><a class="project" href="https://djwillichile.github.io/geoia-bloom-huasco/" target="_blank" rel="noopener">
+            <span class="project__img"><img src="assets/img/p-desierto-florido.jpg" width="1200" height="750" alt="Análisis del Desierto Florido en el Huasco" loading="lazy"></span>
+            <span class="kind"><svg class="icon" aria-hidden="true"><use href="#i-satellite"/></svg>Teledetección</span>
+            <span class="project__name">Desierto Florido<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            <span class="project__desc">Dinámica del desierto florido en la cuenca del Huasco con NDVI MODIS y Google Earth Engine.</span>
+          </a></li>
+          <li data-reveal><a class="project" href="https://djwillichile.github.io/chile-public-procurement-analysis/" target="_blank" rel="noopener">
+            <span class="project__img"><img src="assets/img/p-compras-publicas.jpg" width="1200" height="750" alt="Panel de compras públicas en Chile" loading="lazy"></span>
+            <span class="kind"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Ciencia de datos</span>
+            <span class="project__name">Compras públicas en Chile<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            <span class="project__desc">Análisis estratégico y predictivo de 2019 a 2025 con datos abiertos de ChileCompra.</span>
+          </a></li>
+          <li data-reveal><a class="project" href="https://djwillichile.github.io/missing-data-imputation/" target="_blank" rel="noopener">
+            <span class="project__img"><img src="assets/img/p-datos-faltantes.jpg" width="1200" height="750" alt="Guía de datos faltantes e imputación" loading="lazy"></span>
+            <span class="kind"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>Guía técnica</span>
+            <span class="project__name">Datos faltantes e imputación<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            <span class="project__desc">Métodos de imputación explicados con código reproducible en Python.</span>
+          </a></li>
+          <li data-reveal class="project project--list">
+            <span class="kind"><svg class="icon" aria-hidden="true"><use href="#i-presentation"/></svg>Material docente</span>
+            <a href="https://artefactos-docentes.gfuentes.cl/" target="_blank" rel="noopener">Artefactos docentes<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="https://djwillichile.github.io/webapps-uss/" target="_blank" rel="noopener">Aplicaciones y Tecnologías Web, USS<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="https://djwillichile.github.io/MODULO_03/" target="_blank" rel="noopener">Estructuras en programación<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="https://djwillichile.github.io/MODULO_06/" target="_blank" rel="noopener">Manipulación de información espacial<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="https://djwillichile.github.io/EARN2/" target="_blank" rel="noopener">Clasificación de zonas homogéneas<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="publicaciones" aria-labelledby="pub-t">
+      <div class="wrap">
+        <h2 id="pub-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>Publicaciones</h2>
+        <figure class="pubchart" data-reveal>
+          <figcaption>Artículos y tesis por año</figcaption>
+          <svg class="bars" viewBox="0 0 900 250" role="img" aria-label="Publicaciones por año: 2016: 1, 2017: 0, 2018: 1, 2019: 0, 2020: 2, 2021: 1, 2022: 2, 2023: 3, 2024: 2">
+          <rect class="pbar" style="--i:0" x="22.0" y="155" width="56" height="55" rx="3"/>
+          <text class="bar__n" x="50.0" y="145">1</text>
+          <text class="bar__y" x="50.0" y="238">2016</text>
+          <text class="bar__y" x="150.0" y="238">2017</text>
+          <rect class="pbar" style="--i:2" x="222.0" y="155" width="56" height="55" rx="3"/>
+          <text class="bar__n" x="250.0" y="145">1</text>
+          <text class="bar__y" x="250.0" y="238">2018</text>
+          <text class="bar__y" x="350.0" y="238">2019</text>
+          <rect class="pbar" style="--i:4" x="422.0" y="100" width="56" height="110" rx="3"/>
+          <text class="bar__n" x="450.0" y="90">2</text>
+          <text class="bar__y" x="450.0" y="238">2020</text>
+          <rect class="pbar" style="--i:5" x="522.0" y="155" width="56" height="55" rx="3"/>
+          <text class="bar__n" x="550.0" y="145">1</text>
+          <text class="bar__y" x="550.0" y="238">2021</text>
+          <rect class="pbar" style="--i:6" x="622.0" y="100" width="56" height="110" rx="3"/>
+          <text class="bar__n" x="650.0" y="90">2</text>
+          <text class="bar__y" x="650.0" y="238">2022</text>
+          <rect class="pbar" style="--i:7" x="722.0" y="45" width="56" height="165" rx="3"/>
+          <text class="bar__n" x="750.0" y="35">3</text>
+          <text class="bar__y" x="750.0" y="238">2023</text>
+          <rect class="pbar" style="--i:8" x="822.0" y="100" width="56" height="110" rx="3"/>
+          <text class="bar__n" x="850.0" y="90">2</text>
+          <text class="bar__y" x="850.0" y="238">2024</text>
+          <path class="bars__base" d="M0 210H900"/></svg>
+        </figure>
+        <ol class="pubs">
+          <li data-reveal><span class="when">2024</span><div><a href="https://doi.org/10.1038/s41598-024-66374-6" target="_blank" rel="noopener">Climate change can disproportionately reduce habitats of stream fishes with restricted ranges in southern South America<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Bizama, G., Jan, A., Olivos, J. A., <b>Fuentes-Jaque, G.</b>, Valdovinos, C., Urrutia, R. y Arismendi, I. · <i>Scientific Reports</i></p></div></li>
+          <li data-reveal><span class="when">2024</span><div><a href="https://doi.org/10.3390/hydrology11070103" target="_blank" rel="noopener">Spatio-temporal behavior of land surface temperatures in central Chile, using Terra MODIS images<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Muñoz-Aguayo, P., Morales-Salinas, L., Pizarro, R., Ibáñez, A., Sangüesa, C., <b>Fuentes-Jaque, G.</b>, Toledo, C. y Garcia-Chevesich, P. A. · <i>Hydrology</i></p></div></li>
+          <li data-reveal><span class="when">2023</span><div><a href="https://doi.org/10.1038/s41598-023-40499-6" target="_blank" rel="noopener">Assessment of atmospheric emissivity models for clear-sky conditions with reanalysis data<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Morales-Salinas, L., Ortega-Farias, S., Riveros-Burgos, C., Chávez, J. L., Wang, S., Tian, F., Carrasco-Benavides, M., Neira-Román, J., López-Olivari, R. y <b>Fuentes-Jaque, G.</b> · <i>Scientific Reports</i></p></div></li>
+          <li data-reveal><span class="when">2023</span><div><a href="https://publicaciones.unirioja.es/ojs/index.php/cig/article/view/5473" target="_blank" rel="noopener">Spatial characterization of climatic variables for Arica-Parinacota and Tarapacá, Chile using topoclimatic analysis<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Morales-Salinas, L., Castellaro, G., Frederiksen, N., Roman-Osorio, L. F., Neira-Roman, J., <b>Fuentes-Jaque, G.</b>, Escobar-Avaria, C. y Morales, F. · <i>Cuadernos de Investigación Geográfica</i></p></div></li>
+          <li data-reveal><span class="when">2023</span><div><a href="https://riunet.upv.es/handle/10251/191687" target="_blank" rel="noopener">A simple method for the estimation of minimum and maximum air temperature monthly mean maps using MODIS images in the region of Murcia, Spain<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Galdón-Ruíz, A., <b>Fuentes-Jaque, G.</b>, Soto, J. y Morales-Salinas, L.</p></div></li>
+          <li data-reveal><span class="when">2022</span><div><a href="https://scholar.google.com/scholar?cluster=17986575626395505632&amp;hl=en&amp;oi=scholarr" target="_blank" rel="noopener">Analysis of the spatial distribution of species for HLB and <i>Diaphorina citri</i> in South America through an updated version of the Multi-Model Framework<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Cruz, A., <b>Fuentes, G.</b>, Arraztio, D., Morales, L., Tapia Opazo, R., Olivares Pacheco, N. y Gochez, A. M.</p></div></li>
+          <li data-reveal><span class="when">2021</span><div><a href="https://www.mdpi.com/2072-4292/13/22/4535" target="_blank" rel="noopener">Evidence of climate change based on lake surface temperature trends in south central Chile<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Aranda, A. C., Rivera-Ruiz, D., Rodríguez-López, L., Pedreros, P., <b>Fuentes-Jaque, G.</b> y Urrutia, R. · <i>Remote Sensing</i></p></div></li>
+          <li data-reveal><span class="when">2020</span><div><a href="https://www.mdpi.com/2072-4292/12/20/3345" target="_blank" rel="noopener">Spatio-temporal variation of the urban heat island in Santiago, Chile during summers 2005–2017<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Montaner-Fernández, D., Morales-Salinas, L., Rodriguez, J. S., Cárdenas-Jirón, L., Huete, A., <b>Fuentes-Jaque, G.</b>, Pérez-Martínez, W. y Cabezas, J. · <i>Remote Sensing</i></p></div></li>
+          <li data-reveal><span class="when">2020</span><div><a href="https://www.nature.com/articles/s41598-020-65571-3" target="_blank" rel="noopener">Assessing distribution shifts and ecophysiological characteristics of the only Antarctic winged midge under climate change scenarios<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Contador, T., Gañan, M., Bizama, G., <b>Fuentes-Jaque, G.</b>, Morales, L., Rendoll, J., Simoes, F., Kennedy, J., Rozzi, R. y Convey, P. · <i>Scientific Reports</i></p></div></li>
+          <li data-reveal><span class="when">2018</span><div><a href="https://repositorio.aemet.es/handle/20.500.11765/9991" target="_blank" rel="noopener">Modelo espacialmente explícito de estimación de las temperaturas extremas diarias en la ciudad de Santiago, Chile, usando imágenes MODIS e información meteorológica<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Morales Salinas, L., Cárdenas Jirón, L., Montaner Fernández, D., <b>Fuentes-Jaque, G.</b>, Muñoz Aguayo, P. y Neira Román, J.</p></div></li>
+          <li data-reveal><span class="when">2016</span><div><a href="http://revistas.uach.cl/index.php/agrosur/article/view/5870" target="_blank" rel="noopener">Carga ganadera y capacidad de carga de los pastizales naturales de la Patagonia chilena: estimación a nivel comunal<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p>Castellaro, G., Morales, L., Rodrigo, P. y <b>Fuentes-Jaque, G.</b> · <i>Agro Sur</i></p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="formacion" aria-labelledby="form-t">
+      <div class="wrap">
+        <h2 id="form-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-cap"/></svg>Formación</h2>
+        <ul class="degrees">
+          <li data-reveal><span class="when">2026</span><h3>Ingeniería Civil Informática</h3><p>Universidad San Sebastián</p></li>
+          <li data-reveal><span class="when">2023</span><h3>Magíster en Gestión Territorial de Recursos Naturales</h3><p>Universidad de Chile</p></li>
+          <li data-reveal><span class="when">2022</span><h3>Ingeniería en Recursos Naturales Renovables</h3><p>Universidad de Chile</p></li>
+          <li data-reveal><span class="when">2018</span><h3>Licenciatura en Ciencias de los Recursos Naturales Renovables</h3><p>Universidad de Chile</p></li>
+        </ul>
+        <details class="more">
+          <summary><span>Cursos y certificaciones</span><span class="more__n">23</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <ul class="compact compact--two">
+            <li><span class="when">2025</span><span><b>Business Intelligence Analyst (BIAPC™)</b>, CertiProf</span></li>
+            <li><span class="when">2025</span><span><b>Programa especializado en Ciencia de Datos</b>, Universidad de los Andes</span></li>
+            <li><span class="when">2025</span><span><b>Fundamentos del Análisis de Datos</b>, Macquarie University</span></li>
+            <li><span class="when">2025</span><span><b>Agua superficial con teledetección (SWOT)</b>, NASA ARSET</span></li>
+            <li><span class="when">2025</span><span><b>Academia de Agua y Resiliencia Hídrica</b>, Fundación Uno Punto Cinco</span></li>
+            <li><span class="when">2024</span><span><b>Análisis de Datos con R</b>, Universidad Bernardo O'Higgins</span></li>
+            <li><span class="when">2021</span><span><b>SIG Aplicada a los RNR</b>, Postgrado U. de Chile</span></li>
+            <li><span class="when">2020</span><span><b>Métodos para el Análisis Económico y Social</b>, Postgrado U. de Chile</span></li>
+            <li><span class="when">2020</span><span><b>Sistemas de Soporte a la Toma de Decisiones</b>, Postgrado U. de Chile</span></li>
+            <li><span class="when">2020</span><span><b>Estadística Aplicada a los RNR</b>, Postgrado U. de Chile</span></li>
+            <li><span class="when">2020</span><span><b>Mapeo y monitoreo de bosques con datos SAR</b>, NASA ARSET</span></li>
+            <li><span class="when">2019</span><span><b>Biosphere–atmosphere interactions</b>, Summer School U. de Chile</span></li>
+            <li><span class="when">2018</span><span><b>Evaluación de Proyectos</b>, U. de Chile</span></li>
+            <li><span class="when">2018</span><span><b>Ordenamiento Territorial</b>, U. de Chile</span></li>
+            <li><span class="when">2015</span><span><b>Micrometeorología y Contaminación Atmosférica</b>, UNAM</span></li>
+            <li><span class="when">2015</span><span><b>Aerosoles Atmosféricos</b>, UNAM</span></li>
+            <li><span class="when">2015</span><span><b>Taller de Modelación Numérica</b>, UNAM</span></li>
+            <li><span class="when">2014</span><span><b>Taller de Geoestadística</b>, U. de Chile</span></li>
+            <li><span class="when">2013</span><span><b>Teoría de Sistemas y Modelamiento Ambiental</b>, U. de Chile</span></li>
+            <li><span class="when">2013</span><span><b>Consumo Energético y Calentamiento Global</b>, U. de Chile</span></li>
+            <li><span class="when">2012</span><span><b>Evaluación de Políticas Públicas</b>, U. de Chile</span></li>
+            <li><span class="when">2012</span><span><b>Percepción Remota y Teledetección Ambiental</b>, U. de Chile</span></li>
+            <li><span class="when">2012</span><span><b>Taller de Manejo Integrado de Cuencas</b>, U. de Chile</span></li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto" aria-labelledby="cont-t">
+      <div class="wrap">
+        <h2 id="cont-t" class="title" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Conversemos</h2>
+        <p class="intro" data-reveal>¿Tienes un proyecto de datos territoriales, teledetección o docencia? Escríbeme por el canal que prefieras.</p>
+        <ul class="contact__list">
+          <li data-reveal><a href="mailto:g.fuentes@renare.uchile.cl"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span><b>Correo</b>g.fuentes@renare.uchile.cl</span></a></li>
+          <li data-reveal><a href="https://wa.me/56986876932" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span><b>WhatsApp</b>+56 9 8687 6932</span></a></li>
+          <li data-reveal><a href="https://www.linkedin.com/in/guillermo-fuentes-jaque" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span><b>LinkedIn</b>guillermo-fuentes-jaque</span></a></li>
+          <li data-reveal><a href="https://github.com/djwillichile" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span><b>GitHub</b>djwillichile</span></a></li>
+          <li data-reveal><a href="https://www.instagram.com/guillermo.fuentes.j" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg><span><b>Instagram</b>@guillermo.fuentes.j</span></a></li>
+          <li data-reveal><a href="docs/CV_GSFJ_rev_2026-01-08_ESP.pdf" download><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span><b>Currículum</b>PDF, enero 2026</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Guillermo S. Fuentes-Jaque</p>
+      <p class="footer__credits">Imágenes y video satelitales: NASA (Landsat, MODIS, HLS y fotografías de la Estación Espacial Internacional), dominio público, vía Wikimedia Commons. Mapa base: Natural Earth.</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
