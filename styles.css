@@ -410,6 +410,8 @@ html:not(.js) .exp__toggle { display: none; }
   }
   .mbar .btn { height: 44px; font-size: 15px; }
   .contact { padding-bottom: 72px; }
+  /* la portada termina justo sobre la barra fija de contacto: las etiquetas siempre quedan a la vista */
+  .hero { min-height: min(760px, calc(100vh - var(--bar) - 65px)); min-height: min(760px, calc(100svh - var(--bar) - 65px - env(safe-area-inset-bottom))); }
 }
 @media (max-width: 759px) {
   .perfil__text, .pubs-lists { grid-column: auto; }
@@ -426,10 +428,15 @@ html:not(.js) .exp__toggle { display: none; }
   .more-row .mono { padding-left: 0; }
   .scene-card { display: none; }
   .hero__scenes { left: 16px; align-items: stretch; }
-  .thumbs { justify-content: flex-end; gap: 5px; }
-  .scene-row { justify-content: flex-end; gap: 5px; }
-  .scene-toggle { width: 32px; height: 32px; }
-  .thumb { width: 44px; height: 32px; }
+  .thumbs { display: grid; grid-template-columns: repeat(4, 56px); gap: 6px; } /* 8 escenas en 2 filas */
+  .scene-row { justify-content: flex-end; align-items: flex-start; }
+  .hero__content { padding-top: 124px; padding-bottom: 20px; gap: 16px; }
   .thesis__body { padding: 24px; }
   .contact__list a { grid-template-columns: 92px minmax(0, 1fr) auto; }
+}
+@media (max-width: 599px) and (max-height: 620px) {
+  /* celulares bajos: portada más compacta para que las etiquetas no queden bajo la barra */
+  .hero__content { padding-top: 116px; padding-bottom: 14px; gap: 10px; }
+  .hero__name { font-size: 32px; }
+  .hero__lead { font-size: 16px; line-height: 1.4; }
 }
