@@ -80,7 +80,7 @@
   }
 
   // Portada: escenas con cambio automático (disolución de 500 ms definida en CSS)
-  const INTERVALO = 6000; // milisegundos que cada escena queda en pantalla
+  const INTERVALO = 4000; // milisegundos que cada escena queda en pantalla
   const thumbs = $$('.thumb');
   const scenes = $$('.hero__img');
   const card = $('.scene-card');
