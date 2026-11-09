@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página no encontrada | Guillermo S. Fuentes-Jaque</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="/ICO/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    .lost { min-height: 100svh; display: grid; align-content: center; gap: 24px; padding: var(--bar) var(--m); }
-    .lost .title { font-size: var(--step-display); }
-    .lost p { font-size: var(--step-lead); max-width: 30ch; }
+    .lost { min-height: 100vh; display: grid; align-content: center; justify-items: start; gap: 16px; }
+    .lost h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+    .lost p { color: var(--wst-muted); font-size: 18px; }
   </style>
 </head>
 <body>
-  <main class="lost">
-    <h1 class="title">Fuera del mapa</h1>
+  <main class="container lost">
+    <span class="eyebrow mono">404</span>
+    <h1>Fuera del mapa</h1>
     <p>Esta página no existe o cambió de lugar.</p>
-    <p><a class="button" href="/">Volver al inicio</a></p>
+    <a class="btn btn--green btn--lg" href="./">Volver al inicio</a>
   </main>
 </body>
 </html>
