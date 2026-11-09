@@ -417,6 +417,9 @@ html:not(.js) .exp__toggle { display: none; }
   .more-row { grid-template-columns: minmax(0, 1fr); padding-inline: 16px; }
   .more-row .mono { padding-left: 0; }
   .scene-card { display: none; }
+  .hero__scenes { left: 16px; align-items: stretch; }
+  .thumbs { justify-content: flex-end; gap: 5px; }
+  .thumb { width: 44px; height: 32px; }
   .thesis__body { padding: 24px; }
   .contact__list a { grid-template-columns: 92px minmax(0, 1fr) auto; }
 }
