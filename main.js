@@ -1,39 +1,43 @@
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+  // localStorage puede lanzar SecurityError (modo privado, cookies bloqueadas): nunca debe detener el script
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } },
+  };
 
-  // Red de nodos de fondo: tenue, lenta y detenida si el usuario pide menos movimiento
-  const canvas = document.querySelector('.net');
+  // Red de nodos de fondo: muy tenue, lenta y quieta si el usuario pide menos movimiento
+  const canvas = $('.net');
   if (canvas && canvas.getContext) {
     const ctx = canvas.getContext('2d');
     const LINK = 150;
-    let w = 0, h = 0, nodes = [], raf = 0;
+    let w = 0, h = 0, nodes = [], raf = 0, lastW = 0;
     const size = () => {
       const dpr = Math.min(devicePixelRatio || 1, 2);
-      w = innerWidth; h = innerHeight;
+      w = innerWidth; h = innerHeight; lastW = w;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = Math.min(90, Math.round((w * h) / 17000));
-      nodes = Array.from({ length: n }, () => ({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.18,
-      }));
+      const n = Math.min(80, Math.round((w * h) / 19000));
+      nodes = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.16, vy: (Math.random() - 0.5) * 0.16 }));
     };
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
+      ctx.lineWidth = 1;
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
         for (let j = i + 1; j < nodes.length; j++) {
           const b = nodes[j];
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < LINK) {
-            ctx.strokeStyle = `rgba(90,176,255,${(0.1 * (1 - d / LINK)).toFixed(3)})`;
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = `rgba(15,43,70,${(0.09 * (1 - d / LINK)).toFixed(3)})`;
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
           }
         }
       }
-      ctx.fillStyle = 'rgba(90,176,255,0.28)';
-      for (const p of nodes) { ctx.beginPath(); ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2); ctx.fill(); }
+      ctx.fillStyle = 'rgba(25,118,210,0.22)';
+      for (const p of nodes) { ctx.beginPath(); ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2); ctx.fill(); }
     };
     const step = () => {
       for (const p of nodes) {
@@ -46,11 +50,10 @@
     };
     size();
     if (reduce) draw(); else raf = requestAnimationFrame(step);
-    let lastW = innerWidth;
     addEventListener('resize', () => {
       // En el celular la barra del navegador cambia la altura al hacer scroll: solo se rehace si cambia el ancho
       if (Math.abs(innerWidth - lastW) < 2 && Math.abs(innerHeight - h) < 160) return;
-      lastW = innerWidth; size(); if (reduce) draw();
+      size(); if (reduce) draw();
     });
     document.addEventListener('visibilitychange', () => {
       if (reduce) return;
@@ -58,168 +61,192 @@
     });
   }
 
-  // Portada: la imagen satelital cambia cada pocos segundos
-  const pics = [...document.querySelectorAll('.hero__pic')];
-  const cap = document.querySelector('.hero__cap span');
-  if (pics.length > 1 && !reduce) {
-    let at = 0;
-    setTimeout(() => pics.forEach((f) => { const i = f.querySelector('img'); if (i) i.loading = 'eager'; }), 1500);
-    setInterval(() => {
-      if (document.hidden) return;
-      const next = (at + 1) % pics.length;
-      const img = pics[next].querySelector('img');
-      if (img && !img.complete) return;
-      pics[at].classList.remove('is-active');
-      pics[next].classList.add('is-active');
-      cap.textContent = pics[next].dataset.cap;
-      at = next;
-    }, 6000);
+  // Menú móvil: se cierra con el fondo, con un enlace o con Escape
+  const menuBtn = $('.menu-btn');
+  const drawer = $('#drawer');
+  if (menuBtn && drawer) {
+    const setMenu = (open) => {
+      drawer.hidden = !open;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      if (open) $('a', drawer).focus();
+    };
+    menuBtn.addEventListener('click', () => setMenu(drawer.hidden));
+    $$('[data-close]', drawer).forEach((el) => el.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !drawer.hidden) { setMenu(false); menuBtn.focus(); }
+    });
+    matchMedia('(min-width: 900px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
   }
 
-  // Etiquetas de habilidades: entrada escalonada
-  document.querySelectorAll('.tags').forEach((t) => [...t.children].forEach((s, i) => s.style.setProperty('--i', i)));
+  // Portada: selector de escena
+  const thumbs = $$('.thumb');
+  const scenes = $$('.hero__img');
+  const card = $('.scene-card');
+  const showScene = (btn) => {
+    const key = btn.dataset.scene;
+    scenes.forEach((img) => {
+      const on = img.dataset.scene === key;
+      if (on && img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
+      img.classList.toggle('is-active', on);
+    });
+    thumbs.forEach((t) => { const on = t === btn; t.classList.toggle('is-active', on); t.setAttribute('aria-pressed', String(on)); });
+    $('.scene-card__place', card).textContent = btn.dataset.place;
+    $('.scene-card__meta', card).textContent = btn.dataset.meta;
+  };
+  thumbs.forEach((t) => {
+    t.addEventListener('click', () => showScene(t));
+    // Precarga la imagen grande al apuntar o enfocar la miniatura
+    const preload = () => { const img = scenes.find((s) => s.dataset.scene === t.dataset.scene); if (img && img.dataset.src) { const i = new Image(); i.src = img.dataset.src; } };
+    t.addEventListener('pointerenter', preload, { once: true });
+    t.addEventListener('focus', preload, { once: true });
+  });
 
-  // Contadores
-  const count = (el) => {
+  // Experiencia: trayectoria completa
+  const expBtn = $('.exp__toggle');
+  const expMore = $('#exp-more');
+  if (expBtn && expMore) {
+    expBtn.addEventListener('click', () => {
+      const open = !expMore.classList.contains('is-open');
+      expMore.classList.toggle('is-open', open);
+      expBtn.setAttribute('aria-expanded', String(open));
+      expBtn.textContent = open ? 'Ocultar trayectoria completa' : 'Ver trayectoria completa · 17 cargos más';
+    });
+  }
+
+  // Publicaciones: filtro por año desde el histograma
+  const bars = $('.hist__bars');
+  if (bars) {
+    const items = $$('.pubs-lists > ol:first-child > li');
+    const count = $('.hist__count');
+    const clear = $('.hist__clear');
+    const total = items.length;
+    let year = null;
+    const apply = () => {
+      bars.classList.toggle('has-year', year !== null);
+      $$('button', bars).forEach((b) => { if (!b.disabled) b.setAttribute('aria-pressed', String(b.dataset.year === year)); });
+      let n = 0;
+      items.forEach((li) => { const show = year === null || li.dataset.year === year; li.classList.toggle('is-hidden', !show); if (show) n++; });
+      count.textContent = year === null ? `${total} artículos` : `${n} en ${year}`;
+      clear.hidden = year === null;
+    };
+    $$('button', bars).forEach((b, i) => {
+      b.querySelector('i').style.setProperty('--d', i);
+      b.addEventListener('click', () => { if (b.disabled) return; year = year === b.dataset.year ? null : b.dataset.year; apply(); });
+    });
+    clear.addEventListener('click', () => { year = null; apply(); });
+  }
+
+  // Contadores de las métricas
+  const countUp = (el) => {
     if (reduce) return;
     const to = +el.dataset.count;
     const t0 = performance.now();
     const tick = (t) => {
-      const k = Math.min(1, (t - t0) / 1200);
+      const k = Math.min(1, (t - t0) / 1100);
       el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
       if (k < 1) requestAnimationFrame(tick);
     };
     el.textContent = '0';
     requestAnimationFrame(tick);
   };
+  const metrics = $('.metrics');
+  if (metrics && 'IntersectionObserver' in window) {
+    const mo = new IntersectionObserver(([e]) => { if (e.isIntersecting) { mo.disconnect(); $$('[data-count]', metrics).forEach(countUp); } }, { threshold: 0.5 });
+    mo.observe(metrics);
+  }
 
   // Entradas al aparecer, una sola vez
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      e.target.classList.add('is-in');
-      e.target.querySelectorAll('[data-count]').forEach(count);
-      io.unobserve(e.target);
-    }
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
-  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
-
-  // Línea de tiempo: la línea se dibuja con el scroll
-  const tl = document.querySelector('.timeline');
-  if (tl && !reduce) {
-    const placeLine = () => {
-      const r = tl.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (innerHeight * 0.65 - r.top) / r.height));
-      tl.style.setProperty('--p', p.toFixed(3));
-    };
-    let queued = false;
-    addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; placeLine(); }); } }, { passive: true });
-    placeLine();
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    $$('[data-reveal]').forEach((el) => io.observe(el));
+  } else {
+    $$('[data-reveal]').forEach((el) => el.classList.add('is-in'));
   }
 
-  // Video de la tesis: se reproduce solo cuando está a la vista
-  const video = document.querySelector('.feature video');
-  if (video && !reduce) {
-    new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { video.preload = 'auto'; video.play().catch(() => {}); } else video.pause();
-    }, { threshold: 0.4 }).observe(video);
-  }
+  // Mapa de trayectoria
+  const tmap = $('.tmap');
+  if (!tmap) return;
+  const range = $('.tmap__range', tmap);
+  const play = $('.tmap__play', tmap);
+  const yearEl = $('.tmap__year', tmap);
+  const roles = $$('.tmap__roles li', tmap);
+  const studies = $$('.tmap__studies li', tmap);
+  const circles = $$('.tmap__studies circle', tmap);
+  const places = $$('.tmap__places [data-place]', tmap);
+  const nRoles = $('.tmap__n-roles', tmap);
+  const nStudies = $('.tmap__n-studies', tmap);
+  const empty = $('.tmap__empty', tmap);
+  const setR = (g, on, hl) => {
+    g.querySelector('.dot').setAttribute('r', on ? 5.5 : 3.5);
+    g.querySelector('.halo').setAttribute('r', hl ? 13 : 9);
+  };
+  let year = +(store.get('gfj-map-year') || 2026);
+  if (!(year >= 2010 && year <= 2026)) year = 2026;
 
-  // Mapa histórico
-  const hmap = document.querySelector('.hmap');
-  if (!hmap) return;
-  const ROLES = [
-    ['Científico de Datos Geoespaciales', 'ICTA', 2024, 2026, 'santiago', 'w'],
-    ['Docente de análisis de datos y SIG', 'Universidades', 2022, 2026, 'santiago', 'd'],
-    ['Analista Geoespacial, Censo 2024', 'INE', 2023, 2024, 'santiago', 'w'],
-    ['Analista de datos hidrometeorológicos', 'CITRA, U. de Talca', 2021, 2023, 'talca', 'i'],
-    ['Investigador, proyecto ANID FSEQ210004', 'U. de Talca', 2022, 2023, 'talca', 'i'],
-    ['Profesor de cátedra', 'U. de Chile', 2022, 2023, 'santiago', 'd'],
-    ['Profesor de cátedra', 'U. Mayor', 2022, 2023, 'santiago', 'd'],
-    ['Consultor Geoespacial', 'CEAF', 2021, 2022, 'rengo', 'w'],
-    ['Profesor instructor de SIG y teledetección', 'U. de Chile', 2019, 2023, 'santiago', 'd'],
-    ['Investigador, enfermedades exóticas animales', 'SAG', 2019, 2021, 'santiago', 'i'],
-    ['Investigador, proyecto CORFO nogal', 'U. de Chile', 2019, 2021, 'santiago', 'i'],
-    ['Investigador, plagas cuarentenarias', 'U. de Chile', 2019, 2021, 'santiago', 'i'],
-    ['Asistente, proyecto FIA de evapotranspiración', 'U. de Talca', 2018, 2019, 'talca', 'i'],
-    ['Personal técnico, FONDECYT 1181374', 'U. de Concepción', 2018, 2019, 'concepcion', 'i'],
-    ['Especialista SIG, promoción de salud', 'Mun. de Estación Central', 2017, 2018, 'santiago', 'w'],
-    ['Apoyo técnico, calidad del aire', 'ENAP', 2017, 2018, null, 'w'],
-    ['Asistente, FONDECYT microclima urbano', 'U. de Chile', 2016, 2019, 'santiago', 'i'],
-    ['Profesional de apoyo, zonificación agrometeorológica', 'INIA', 2016, 2017, null, 'i'],
-    ['Analista de datos, zonificación del tabaco', 'Cía. Chilena de Tabaco', 2015, 2016, 'santiago', 'w'],
-    ['Ayudante de cátedra', 'U. de Chile', 2011, 2018, 'santiago', 'd'],
-    ['Director General', 'Preuniversitario Popular Antumapu', 2011, 2016, 'santiago', 'd'],
-    ['Profesor de Matemáticas, Física y Geografía', 'Preuniversitario Popular Antumapu', 2010, 2017, 'santiago', 'd'],
-    ['Sistemas y redes computacionales', 'Independiente', 2006, 2015, null, 'w'],
-  ];
-  const STUDIES = [
-    ['Pastizales naturales de la Patagonia chilena', 2016, 'patagonia'],
-    ['Zonificación agrometeorológica de Arica y Parinacota', 2016, 'aricaParinacota'],
-    ['Temperaturas extremas en Santiago con MODIS', 2018, 'santiago'],
-    ['Isla de calor urbana de Santiago', 2020, 'santiago'],
-    ['Mosquito alado antártico y cambio climático', 2020, 'antartica'],
-    ['Temperatura superficial de lagos del centro-sur', 2021, 'lagos'],
-    ['Tesis: precipitación en el desierto de Atacama', 2022, 'atacama'],
-    ['Topoclima de Arica-Parinacota y Tarapacá', 2023, 'aricaParinacota'],
-    ['Temperatura superficial de Chile central', 2024, 'chileCentral'],
-    ['Hábitat de peces de río en el sur', 2024, 'lagos'],
-    ['Desierto Florido en la cuenca del Huasco', 2026, 'huasco'],
-  ];
-  const ICON = { w: 'i-briefcase', d: 'i-presentation', i: 'i-satellite' };
-  const KIND = { w: 'Trabajo', d: 'Docencia', i: 'Investigación' };
-  const range = hmap.querySelector('input[type="range"]');
-  const yearEl = hmap.querySelector('.hmap__year');
-  const rolesEl = hmap.querySelector('.hmap__roles');
-  const studiesEl = hmap.querySelector('.hmap__studies');
-  const play = hmap.querySelector('.hmap__play');
-  const works = [...hmap.querySelectorAll('.work')];
-  const studyDots = [...hmap.querySelectorAll('.study')];
-  const icon = (id) => `<svg class="icon" aria-hidden="true"><use href="#${id}"/></svg>`;
-  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-
-  const render = (y) => {
-    yearEl.textContent = y;
+  const render = (y, animate) => {
+    year = y;
     range.value = y;
     range.setAttribute('aria-valuetext', String(y));
-    const active = ROLES.filter((r) => r[2] <= y && y <= r[3]).sort((a, b) => b[2] - a[2]);
-    const places = new Set(active.map((r) => r[4]).filter(Boolean));
-    works.forEach((g) => g.classList.toggle('is-on', places.has(g.dataset.loc)));
-    const seen = STUDIES.filter((s) => s[1] <= y);
-    studyDots.forEach((c) => {
-      const here = seen.filter((s) => s[2] === c.dataset.loc);
-      c.classList.toggle('is-on', here.length > 0);
-      c.classList.toggle('is-new', here.some((s) => s[1] === y));
+    yearEl.textContent = y;
+    const active = new Set();
+    let nr = 0;
+    roles.forEach((li) => {
+      const on = +li.dataset.from <= y && y <= +li.dataset.to;
+      const was = !li.classList.contains('is-hidden');
+      li.classList.toggle('is-hidden', !on);
+      li.classList.toggle('is-new-in', on && !was && animate);
+      if (on) { active.add(li.dataset.place); nr++; }
     });
-    rolesEl.innerHTML = active.length
-      ? active.map((r) => `<li>${icon(ICON[r[5]])}<span>${esc(r[0])}<small>${esc(r[1])} · ${KIND[r[5]]} · ${r[2]}–${r[3] === 2026 ? 'hoy' : r[3]}</small></span></li>`).join('')
-      : '<li class="hmap__empty">Sin cargos registrados ese año.</li>';
-    studiesEl.innerHTML = seen.length
-      ? seen.slice().reverse().map((s) => `<li>${icon('i-map')}<span>${esc(s[0])}<small>${s[1]}${s[1] === y ? ' · nuevo' : ''}</small></span></li>`).join('')
-      : '<li class="hmap__empty">Todavía no hay estudios publicados.</li>';
+    let ns = 0;
+    studies.forEach((li) => {
+      const on = +li.dataset.year <= y;
+      const was = !li.classList.contains('is-hidden');
+      li.classList.toggle('is-hidden', !on);
+      li.classList.toggle('is-new-in', on && !was && animate);
+      if (on) ns++;
+    });
+    circles.forEach((c) => {
+      const cy = +c.dataset.year;
+      c.classList.toggle('is-off', cy > y);
+      c.classList.toggle('is-new', cy === y);
+    });
+    places.forEach((g) => { const on = active.has(g.dataset.place); g.classList.toggle('is-on', on); setR(g, on, g.classList.contains('is-hl')); });
+    nRoles.textContent = nr;
+    nStudies.textContent = ns;
+    empty.hidden = ns > 0;
   };
+  const setYear = (y, animate = true) => { render(y, animate); store.set('gfj-map-year', y); };
+
+  // Al pasar por un cargo se resalta su lugar en el mapa
+  roles.forEach((li) => {
+    const hl = (on) => {
+      li.classList.toggle('is-hl', on);
+      places.forEach((g) => { const is = on && g.dataset.place === li.dataset.place; g.classList.toggle('is-hl', is); setR(g, g.classList.contains('is-on'), is); });
+    };
+    li.addEventListener('pointerenter', () => hl(true));
+    li.addEventListener('pointerleave', () => hl(false));
+  });
 
   let timer = 0;
   const stop = () => { clearInterval(timer); timer = 0; play.classList.remove('is-playing'); play.setAttribute('aria-label', 'Reproducir la línea de tiempo'); };
   const start = () => {
-    if (+range.value >= +range.max) render(+range.min);
+    if (year >= 2026) setYear(2010);
     play.classList.add('is-playing');
     play.setAttribute('aria-label', 'Pausar la línea de tiempo');
-    timer = setInterval(() => {
-      const y = +range.value + 1;
-      if (y > +range.max) { stop(); return; }
-      render(y);
-    }, 1100);
+    timer = setInterval(() => { if (year >= 2026) { stop(); return; } setYear(year + 1); }, 900);
   };
   play.addEventListener('click', () => (timer ? stop() : start()));
-  range.addEventListener('input', () => { stop(); render(+range.value); });
-  render(+range.value);
+  range.addEventListener('input', () => { stop(); setYear(+range.value); });
+  render(year, false);
 
-  // La primera vez que el mapa aparece, recorre los años solo
-  if (!reduce) {
+  // La primera vez que el mapa entra en pantalla recorre los años solo, salvo con movimiento reducido
+  if (!reduce && 'IntersectionObserver' in window && !store.get('gfj-map-played')) {
     const once = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { once.disconnect(); render(+range.min); start(); }
-    }, { threshold: 0.45 });
-    once.observe(hmap);
+      if (e.isIntersecting) { once.disconnect(); store.set('gfj-map-played', '1'); setYear(2010, false); start(); }
+    }, { threshold: 0.4 });
+    once.observe(tmap);
   }
 })();
