@@ -157,14 +157,14 @@
     const items = $$('.pubs-lists > ol:first-child > li');
     const count = $('.hist__count');
     const clear = $('.hist__clear');
-    const total = items.length;
+    const totalText = count.textContent; // el texto del HTML distingue artículos y congreso
     let year = null;
     const apply = () => {
       bars.classList.toggle('has-year', year !== null);
       $$('button', bars).forEach((b) => { if (!b.disabled) b.setAttribute('aria-pressed', String(b.dataset.year === year)); });
       let n = 0;
       items.forEach((li) => { const show = year === null || li.dataset.year === year; li.classList.toggle('is-hidden', !show); if (show) n++; });
-      count.textContent = year === null ? `${total} artículos` : `${n} en ${year}`;
+      count.textContent = year === null ? totalText : `${n} en ${year}`;
       clear.hidden = year === null;
     };
     $$('button', bars).forEach((b, i) => {
