@@ -113,7 +113,8 @@
       <img class="hero__img" data-scene="arica" data-src="assets/img/arica.jpg" width="1100" height="723" alt="Arica y el valle de Azapa desde la Estación Espacial Internacional, 2006">
       <img class="hero__img" data-scene="atacama" data-src="assets/img/atacama-nieve.jpg" width="1000" height="667" alt="Nieve sobre el desierto de Atacama, Landsat 2025">
       <img class="hero__img" data-scene="santiago" data-src="assets/img/santiago-noche.jpg" width="1100" height="733" alt="Santiago de noche desde la Estación Espacial Internacional">
-      <img class="hero__img" data-scene="llanquihue" data-src="assets/img/llanquihue.jpg" width="1100" height="723" alt="Lago Llanquihue y Puerto Varas desde la Estación Espacial Internacional, 2002">
+      <img class="hero__img" data-scene="cantillana" data-src="assets/img/cantillana.jpg" data-srcset="assets/img/cantillana-960.jpg 960w, assets/img/cantillana.jpg 1600w" sizes="100vw" width="1600" height="1029" alt="Santiago sur desde el satélite Sentinel-2 en enero de 2026: la precordillera de los Andes, los Altos de Cantillana, la Laguna de Aculeo, el lago Rapel y la costa del Pacífico">
+      <img class="hero__img" data-scene="llanquihue" data-src="assets/img/llanquihue.jpg" data-srcset="assets/img/llanquihue-960.jpg 960w, assets/img/llanquihue.jpg 1600w" sizes="100vw" width="1600" height="1051" alt="El lago Llanquihue con Puerto Varas en su orilla sur y los volcanes Osorno y Calbuco, en un compuesto de imágenes Landsat y Sentinel-2 de los veranos 2024 a 2026">
       <img class="hero__img" data-scene="campo" data-src="assets/img/campo-de-hielo.jpg" width="1100" height="732" alt="Campo de Hielo Patagónico Sur">
       <img class="hero__img" data-scene="antartica" data-src="assets/img/antartica.jpg" width="1400" height="1019" alt="Península Antártica y mar de Weddell, imagen MODIS de 2026">
       <div class="hero__shade" aria-hidden="true"></div>
@@ -125,14 +126,21 @@
         <span class="scene-card__place">Río Lluta, Arica</span>
         <span class="scene-card__meta mono">18.4° S, 70.1° O · ISS</span>
       </div>
+      <div class="scene-row">
+      <button class="scene-toggle" type="button" aria-label="Pausar el cambio automático de escena" aria-pressed="false">
+        <svg class="i-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>
+        <svg class="i-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>
+      </button>
       <div class="thumbs" role="group" aria-label="Elegir escena">
         <button type="button" class="thumb is-active" data-scene="lluta" data-place="Río Lluta, Arica" data-meta="18.4° S, 70.1° O · ISS" aria-label="Río Lluta, Arica" aria-pressed="true"><img src="assets/img/lluta-thumb.jpg" width="112" height="80" alt=""></button>
         <button type="button" class="thumb" data-scene="arica" data-place="Arica y valle de Azapa" data-meta="18.5° S, 70.3° O · ISS" aria-label="Arica y valle de Azapa" aria-pressed="false"><img src="assets/img/arica-thumb.jpg" width="112" height="80" alt=""></button>
         <button type="button" class="thumb" data-scene="atacama" data-place="Desierto de Atacama" data-meta="23.5° S, 68.2° O · Landsat" aria-label="Desierto de Atacama" aria-pressed="false"><img src="assets/img/atacama-nieve-thumb.jpg" width="112" height="80" alt=""></button>
         <button type="button" class="thumb" data-scene="santiago" data-place="Santiago de noche" data-meta="33.4° S, 70.6° O · ISS" aria-label="Santiago de noche" aria-pressed="false"><img src="assets/img/santiago-noche-thumb.jpg" width="112" height="80" alt=""></button>
-        <button type="button" class="thumb" data-scene="llanquihue" data-place="Lago Llanquihue" data-meta="41.1° S, 72.8° O · ISS" aria-label="Lago Llanquihue" aria-pressed="false"><img src="assets/img/llanquihue-thumb.jpg" width="112" height="80" alt=""></button>
+        <button type="button" class="thumb" data-scene="cantillana" data-place="Santiago sur y Altos de Cantillana" data-meta="33.9° S, 71.1° O · Sentinel-2" aria-label="Santiago sur y Altos de Cantillana" aria-pressed="false"><img src="assets/img/cantillana-thumb.jpg" width="112" height="80" alt=""></button>
+        <button type="button" class="thumb" data-scene="llanquihue" data-place="Lago Llanquihue, Osorno y Calbuco" data-meta="41.2° S, 72.7° O · Landsat y Sentinel-2" aria-label="Lago Llanquihue, Osorno y Calbuco" aria-pressed="false"><img src="assets/img/llanquihue-thumb.jpg" width="112" height="80" alt=""></button>
         <button type="button" class="thumb" data-scene="campo" data-place="Campo de Hielo Sur" data-meta="49.5° S, 73.3° O · ISS" aria-label="Campo de Hielo Sur" aria-pressed="false"><img src="assets/img/campo-de-hielo-thumb.jpg" width="112" height="80" alt=""></button>
         <button type="button" class="thumb" data-scene="antartica" data-place="Península Antártica" data-meta="64.0° S, 60.0° O · MODIS" aria-label="Península Antártica" aria-pressed="false"><img src="assets/img/antartica-thumb.jpg" width="112" height="80" alt=""></button>
+      </div>
       </div>
     </div>
 
@@ -553,7 +561,7 @@
     </div>
     <div class="container contact__foot">
       <span>© 2026 Guillermo S. Fuentes-Jaque</span>
-      <span>Imágenes satelitales: NASA (Landsat, MODIS, ISS), dominio público, vía Wikimedia Commons. Mapa base: Natural Earth.</span>
+      <span>Imágenes satelitales: NASA (Landsat, MODIS, ISS y HLS Landsat/Sentinel-2), dominio público, vía Wikimedia Commons y NASA GIBS. Mapa base: Natural Earth.</span>
     </div>
   </section>
 

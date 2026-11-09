@@ -79,28 +79,65 @@
     matchMedia('(min-width: 900px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
   }
 
-  // Portada: selector de escena
+  // Portada: escenas con cambio automático (disolución de 500 ms definida en CSS)
+  const INTERVALO = 6000; // milisegundos que cada escena queda en pantalla
   const thumbs = $$('.thumb');
   const scenes = $$('.hero__img');
   const card = $('.scene-card');
-  const showScene = (btn) => {
-    const key = btn.dataset.scene;
-    scenes.forEach((img) => {
-      const on = img.dataset.scene === key;
-      if (on && img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
-      img.classList.toggle('is-active', on);
-    });
+  const toggle = $('.scene-toggle');
+  const sceneOf = (btn) => scenes.find((s) => s.dataset.scene === btn.dataset.scene);
+  // Asigna la imagen grande la primera vez que se necesita y espera a que esté decodificada
+  const load = (img) => {
+    if (img.dataset.srcset) { img.srcset = img.dataset.srcset; img.removeAttribute('data-srcset'); }
+    if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
+    return img.decode ? img.decode().catch(() => {}) : Promise.resolve();
+  };
+  let current = 0;
+  const showScene = async (btn) => {
+    const target = sceneOf(btn);
+    await load(target);
+    current = thumbs.indexOf(btn);
+    scenes.forEach((img) => img.classList.toggle('is-active', img === target));
     thumbs.forEach((t) => { const on = t === btn; t.classList.toggle('is-active', on); t.setAttribute('aria-pressed', String(on)); });
     $('.scene-card__place', card).textContent = btn.dataset.place;
     $('.scene-card__meta', card).textContent = btn.dataset.meta;
+    load(sceneOf(thumbs[(current + 1) % thumbs.length])); // deja lista la siguiente
+  };
+
+  // El cambio automático se detiene con el botón, al elegir una escena, al apuntar las miniaturas,
+  // cuando la portada no está en pantalla o la pestaña está oculta, y nunca arranca con movimiento reducido
+  let userPaused = reduce, hover = false, visible = true, sceneTimer = 0;
+  const running = () => !userPaused && !hover && visible && !document.hidden;
+  const schedule = () => {
+    clearTimeout(sceneTimer);
+    if (running()) sceneTimer = setTimeout(async () => { await showScene(thumbs[(current + 1) % thumbs.length]); schedule(); }, INTERVALO);
+  };
+  const setPaused = (p) => {
+    userPaused = p;
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(p));
+      toggle.setAttribute('aria-label', p ? 'Reanudar el cambio automático de escena' : 'Pausar el cambio automático de escena');
+    }
+    schedule();
   };
   thumbs.forEach((t) => {
-    t.addEventListener('click', () => showScene(t));
-    // Precarga la imagen grande al apuntar o enfocar la miniatura
-    const preload = () => { const img = scenes.find((s) => s.dataset.scene === t.dataset.scene); if (img && img.dataset.src) { const i = new Image(); i.src = img.dataset.src; } };
+    t.addEventListener('click', () => { showScene(t); setPaused(true); });
+    const preload = () => load(sceneOf(t));
     t.addEventListener('pointerenter', preload, { once: true });
     t.addEventListener('focus', preload, { once: true });
   });
+  const scenesBox = $('.thumbs');
+  if (scenesBox) {
+    scenesBox.addEventListener('pointerenter', () => { hover = true; schedule(); });
+    scenesBox.addEventListener('pointerleave', () => { hover = false; schedule(); });
+  }
+  toggle && toggle.addEventListener('click', () => setPaused(!userPaused));
+  document.addEventListener('visibilitychange', schedule);
+  const hero = $('.hero');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; schedule(); }, { threshold: 0.3 }).observe(hero);
+  }
+  if (thumbs.length > 1) { load(sceneOf(thumbs[1])); setPaused(userPaused); }
 
   // Experiencia: trayectoria completa
   const expBtn = $('.exp__toggle');
